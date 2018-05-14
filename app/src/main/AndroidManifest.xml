@@ -10,6 +10,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LogIn"
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
