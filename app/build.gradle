@@ -4,7 +4,7 @@ android {
     compileSdkVersion 24
     defaultConfig {
         applicationId "dsa.dsa_app"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -15,6 +15,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
     }
 }
 
@@ -29,4 +33,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.google.code.gson:gson:2.8.4'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.9.5'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.5'
 }
