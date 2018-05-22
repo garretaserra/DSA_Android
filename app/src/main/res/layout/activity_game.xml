@@ -13,6 +13,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="148dp"
         android:layout_marginStart="148dp"
+        android:onClick="getMapList"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

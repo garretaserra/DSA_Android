@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Game extends AppCompatActivity {
 
     //Base URL of server
-    public static final String baseURL = "http://localhost:8080/myapp";
+    public static final String baseURL = "http://localhost:8080/myapp/";
 
     private MapAPI mapServices;
 
@@ -25,9 +25,7 @@ public class Game extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        //Remove title bar
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //Remove notification bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //start API
@@ -54,7 +52,7 @@ public class Game extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<String> call, Throwable t){
-
+                //Logger
             }
         }
         );
