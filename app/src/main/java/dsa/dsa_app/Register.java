@@ -13,7 +13,6 @@ public class Register extends AppCompatActivity {
     EditText email;
     EditText passw;
     EditText passw2;
-    EditText uni;
     String res;
     String passw3;
     String passw4;
@@ -57,11 +56,11 @@ public class Register extends AppCompatActivity {
 
     public void creaServer(View view) {
         //Guardo en variables lo que el usuario ecribe en la app en cada textBox
+
         name = (EditText) findViewById (R.id.nom);
         email = (EditText) findViewById (R.id.email); // poner el nombre de la cajita de texto "editText..."
         passw = (EditText) findViewById (R.id.passw);
         passw2 = (EditText) findViewById (R.id.passw2);
-        uni = (EditText) findViewById (R.id.uni);
 
         passw3 = "3"+passw.getText();
         passw4 = "3"+passw2.getText();
@@ -86,7 +85,6 @@ public class Register extends AppCompatActivity {
         email = (EditText) findViewById (R.id.email); // poner el nombre de la cajita de texto "editText..."
         passw = (EditText) findViewById (R.id.passw);
         passw2 = (EditText) findViewById (R.id.passw2);
-        uni = (EditText) findViewById (R.id.uni);
 
         passw3 = "3"+passw.getText();
         passw4 = "3"+passw2.getText();
