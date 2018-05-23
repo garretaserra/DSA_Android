@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DSA_App</string>
     <string name="title_activity_game">Game</string>
+    <string name="ip">192.168.42.209</string>
 </resources>

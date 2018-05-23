@@ -7,6 +7,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import java.util.List;
+
 import dsa.dsa_app.map.MapAPI;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Game extends AppCompatActivity {
 
     //Base URL of server
-    public static final String baseURL = "http://localhost:8080/myapp/";
+    public static final String baseURL = "http://192.168.42.209:8080/myapp/";
 
     private MapAPI mapServices;
 
@@ -39,19 +41,19 @@ public class Game extends AppCompatActivity {
 
     public void getMapList(View view){
         mapServices.getMapList().enqueue(
-        new Callback<String>(){
+        new Callback<List<String>>(){
             @Override
-            public void onResponse(Call<String> call, Response<String> response){
+            public void onResponse(Call<List<String>> call, Response<List<String>> response){
                 if(response.isSuccessful()){
                     TextView tx = (TextView)findViewById(R.id.textView);
-                    tx.setText(response.body());
+                    tx.setText(response.body().toString());
                 }
                 else{
                     //Logger
                 }
             }
             @Override
-            public void onFailure(Call<String> call, Throwable t){
+            public void onFailure(Call<List<String>> call, Throwable t){
                 //Logger
             }
         }
