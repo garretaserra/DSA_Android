@@ -16,6 +16,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,13 +27,14 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UserInfo"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".MapList"
             android:screenOrientation="landscape" />
         <activity
             android:name=".UserMain"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
+        <activity android:name=".Register"></activity>
     </application>
 
 </manifest>
