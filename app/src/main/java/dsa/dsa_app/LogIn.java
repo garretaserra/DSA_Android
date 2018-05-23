@@ -7,8 +7,24 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.List;
+
+import dsa.dsa_app.Rest.MapRest;
+import dsa.dsa_app.Rest.Usuario;
+import dsa.dsa_app.map.MapAPI;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LogIn extends AppCompatActivity {
+
+    //Base URL of server
+    public static final String baseURL = "http://192.168.42.209:8080/myapp/";
+    private MapRest mapServices; //modifico con nombre interfaz
 
     EditText email;
     EditText passw;
@@ -27,6 +43,13 @@ public class LogIn extends AppCompatActivity {
         email = (EditText) findViewById (R.id.email); // poner el nombre de la cajita de texto "editText..."
         passw = (EditText) findViewById (R.id.passw);
 
+        //start API
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseURL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        mapServices = retrofit.create(MapRest.class); //modifico con nombre interfaz
+
     }
 
 
@@ -39,7 +62,25 @@ public class LogIn extends AppCompatActivity {
     }
 
     public void loginServer(View view){ //editar este campo para conectar con Servidor
-        Intent i = new Intent(this, UserMain.class);
-        startActivity(i);
+
+        mapServices.getLogIn().enqueue( //funcion que he definido
+                new Callback<Usuario>(){ //pongo lo que retorno
+                    @Override
+                    public void onResponse(Call<Usuario> call, Response<Usuario> response){
+                        if(response.isSuccessful()){ //pongo toda la funcion cuando me funciona el retrofit
+                            //EDITAR CON LA RESPUESTA DE DANI
+                            Intent i = new Intent(getApplicationContext(), UserMain.class);
+                            startActivity(i);
+                        }
+                        else{
+                            //Logger
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<Usuario> call, Throwable t){
+                        //Logger
+                    }
+                }
+        );
     }
 }
