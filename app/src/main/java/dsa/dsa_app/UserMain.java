@@ -18,7 +18,7 @@ public class UserMain extends AppCompatActivity {
     }
 
     public void playGame(View view){
-        Intent i = new Intent(this, Game.class);
+        Intent i = new Intent(this, MapList.class);
         startActivity(i);
     }
 

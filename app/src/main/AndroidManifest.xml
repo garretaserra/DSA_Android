@@ -14,14 +14,10 @@
             android:name=".LogIn"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".Game"
+            android:name=".MapList"
             android:label="@string/title_activity_game"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -29,12 +25,16 @@
             android:name=".UserInfo"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".MapList"
-            android:screenOrientation="landscape" />
-        <activity
             android:name=".UserMain"
             android:screenOrientation="landscape" />
-        <activity android:name=".Register"></activity>
+        <activity android:name=".Register" />
+        <activity android:name=".Game"
+            android:screenOrientation="landscape">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
     </application>
 
 </manifest>
