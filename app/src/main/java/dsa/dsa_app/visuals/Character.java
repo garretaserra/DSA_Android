@@ -8,12 +8,13 @@ import dsa.dsa_app.map.GameView;
 
 public class Character extends Sprite {
 
-    int[] DIRECTION_TO_ANIMATION_MAP = { 1, 2, 0, 2 };
+    int[] DIRECTION_TO_ANIMATION_MAP = { 1, 2, 1, 0 };
     private static final int BMP_ROWS = 3;
     private static final int BMP_COLUMNS = 3;
     private int posx = 0;
     private int posy = 0;
-    private int speed = 10;
+    private int speed;
+    private final int defSpeed = 15;
     private Bitmap bmp;
     private int currentFrame = 0;
     private int width;
@@ -32,24 +33,42 @@ public class Character extends Sprite {
     public int getHeight() {
         return height;
     }
-
     @Override
     public int getWidth() {
         return width;
     }
-
     @Override
     public int getPosx() {
         return posx;
     }
-
     @Override
     public int getPosy() {
         return posy;
     }
 
+    public void update(){
+        if(speed!=0) {
+            currentFrame = ++currentFrame % BMP_COLUMNS;
+        }
+        //Change the position depending on the direction of movement
+        switch (direction){
+            case 0:     //left
+                posx -= speed;
+                break;
+            case 1:     //up
+                posy -= speed;
+                break;
+            case 2:     //right
+                posx += speed;
+                break;
+            case 3:     //down
+                posy += speed;
+                break;
+        }
+    }
+
     public void draw(Canvas canvas) {
-        currentFrame = ++currentFrame % BMP_COLUMNS;
+        update();
         int srcX = currentFrame * width;
         int srcY = DIRECTION_TO_ANIMATION_MAP[direction] * height;
         Rect src = new Rect(srcX, srcY, srcX + width, srcY + height);
@@ -63,20 +82,11 @@ public class Character extends Sprite {
     }
 
     public void move(int direction){
-        direction = direction;
-        switch (direction){
-            case 0:
-                posy += speed;
-                break;
-            case 1:
-                posx -= speed;
-                break;
-            case 2:
-                posy -= speed;
-                break;
-            case 3:
-                posx += speed;
-                break;
-        }
+        this.direction = direction;
+        speed = defSpeed;
+
+    }
+    public void stop(){
+        speed = 0;
     }
 }

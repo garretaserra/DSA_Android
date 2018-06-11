@@ -11,7 +11,7 @@ public class Arrows extends Sprite {
 
     private Bitmap bmp;
     private GameView gameView;
-    private final int sideLength = 300;  //Length of the side of the arrows image
+    private final int sideLength = 400;  //Length of the side of the arrows image
     private int posx;
     private int posy;
     private int width = sideLength;
@@ -56,11 +56,16 @@ public class Arrows extends Sprite {
 
     @Override
     public void onTouch(GameView gameView, MotionEvent event) {
-        int ctrx = posx + width/2;
-        int ctry = posy + height/2;
-        float x = event.getX()-ctrx;
-        float y = event.getY()-ctry;
-        int direction = (int) Math.round(Math.atan2(y,x)/Math.PI/2 + 2) % 4;
-        gameView.getCharacter().move(direction);
+        if(event.getAction()==MotionEvent.ACTION_DOWN) {
+            int ctrx = posx + width / 2;
+            int ctry = posy + height / 2;
+            float x = event.getX() - ctrx;
+            float y = event.getY() - ctry;
+            int direction = ((int) Math.round((Math.atan2(y, x) / (Math.PI / 2)) + 2)) % 4;
+            gameView.getCharacter().move(direction);
+        }
+        if(event.getAction()==MotionEvent.ACTION_UP){
+            gameView.getCharacter().stop();
+        }
     }
 }

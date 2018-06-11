@@ -65,8 +65,9 @@ public class GameView extends SurfaceView {
                 break;
             }
         }
-        return super.onTouchEvent(event);
+        return true;
     }
+
 
     @Override
     public void draw(Canvas canvas) {
