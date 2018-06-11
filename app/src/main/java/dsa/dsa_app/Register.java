@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import dsa.dsa_app.Rest.MapRest;
-import dsa.dsa_app.Rest.Usuario;
+import dsa.dsa_app.rest.MapRest;
+import dsa.dsa_app.rest.Usuario;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -7,13 +7,20 @@ import android.graphics.Color;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import dsa.dsa_app.R;
+import dsa.dsa_app.visuals.Character;
+import dsa.dsa_app.visuals.Sprite;
 
 public class GameView extends SurfaceView {
     private Bitmap bmp;
     private SurfaceHolder holder;
     private GameLoopThread gameLoopThread;
-    private Sprite sprite;
+    private Character character;
+    private List<Sprite> entities = new ArrayList<>();
 
     public GameView(Context context) {
         super(context);
@@ -46,14 +53,25 @@ public class GameView extends SurfaceView {
             }
         });
         bmp = BitmapFactory.decodeResource(getResources(), R.drawable.maincharacter);
-        sprite = new Sprite(this,bmp);
+        character = new Character(this,bmp);
+        entities.add(character);
     }
 
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
         canvas.drawColor(Color.BLACK);
-        sprite.draw(canvas);
+        //draw map
+
+
+
+        //draw entities
+        for(Sprite s : entities.stream().filter(x->x.getClass()==character.getClass()).collect(Collectors.toList())){
+            s.draw(canvas);
+        }
+
+        //draw arrows
+
     }
 
 }

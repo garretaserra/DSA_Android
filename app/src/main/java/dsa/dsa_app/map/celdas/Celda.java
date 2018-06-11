@@ -1,6 +1,8 @@
 package dsa.dsa_app.map.celdas;
 
 
+import android.graphics.Canvas;
+
 /*@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
 @JsonSubTypes({
@@ -8,7 +10,7 @@ package dsa.dsa_app.map.celdas;
     @JsonSubTypes.Type(value = Muro.class, name = "Muro"),
 }
 )*/
-public abstract class Celda {
+public abstract class Celda{
 
     public abstract String getLetra();
 

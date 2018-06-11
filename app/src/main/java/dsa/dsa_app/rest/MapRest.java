@@ -1,9 +1,6 @@
-package dsa.dsa_app.Rest;
-
-import java.util.List;
+package dsa.dsa_app.rest;
 
 import retrofit2.Call;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface MapRest {

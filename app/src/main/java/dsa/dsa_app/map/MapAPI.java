@@ -1,17 +1,26 @@
 package dsa.dsa_app.map;
+import android.content.res.Resources;
 
-import java.util.List;
-import java.util.Map;
+import dsa.dsa_app.R;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
+public class MapAPI {
 
-public interface MapAPI {
+    private static MapAPII instance;
 
-    @GET("map/list/")
-    Call<List<String>> getMapList();
+    private MapAPI(){
+        String baseURL = "http://" + "192.168.42.123" + ":8080/myapp/";
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseURL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        instance = retrofit.create(MapAPII.class);
+    }
 
-    @GET("map/getbyname/")
-    Call<Map> getMap(@Body String nombremapa);
+    public static MapAPII getInstance(){
+        if(instance==null)
+            new MapAPI();
+        return instance;
+    }
 }

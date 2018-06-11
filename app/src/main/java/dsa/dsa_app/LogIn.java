@@ -7,13 +7,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import java.util.List;
-
-import dsa.dsa_app.Rest.MapRest;
-import dsa.dsa_app.Rest.Usuario;
-import dsa.dsa_app.map.MapAPI;
+import dsa.dsa_app.rest.MapRest;
+import dsa.dsa_app.rest.Usuario;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

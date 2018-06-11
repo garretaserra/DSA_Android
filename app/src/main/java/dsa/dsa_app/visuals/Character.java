@@ -1,13 +1,14 @@
-package dsa.dsa_app.map;
-import java.util.Random;
+package dsa.dsa_app.visuals;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-public class Sprite {
+import dsa.dsa_app.map.GameView;
+
+public class Character extends Sprite {
     // direction = 0 up, 1 left, 2 down, 3 right,
     // animation = 3 back, 1 left, 0 front, 2 right
-    int[] DIRECTION_TO_ANIMATION_MAP = { 1, 1, 0, 2 };
+    int[] DIRECTION_TO_ANIMATION_MAP = { 1, 2, 0, 2 };
     private static final int BMP_ROWS = 3;
     private static final int BMP_COLUMNS = 3;
     private int x = 0;
@@ -21,7 +22,7 @@ public class Sprite {
     private int height;
 
 
-    public Sprite(GameView gameView, Bitmap bmp) {
+    public Character(GameView gameView, Bitmap bmp) {
         this.width = bmp.getWidth() / BMP_COLUMNS;
         this.height = bmp.getHeight() / BMP_ROWS;
         this.gameView = gameView;

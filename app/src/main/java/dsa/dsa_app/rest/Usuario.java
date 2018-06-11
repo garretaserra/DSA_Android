@@ -1,14 +1,8 @@
-package dsa.dsa_app.Rest;
+package dsa.dsa_app.rest;
 
-import dsa.dsa_app.map.Views;
 import dsa.dsa_app.map.Views;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.LinkedList;
-import java.util.List;
 
 
 public class Usuario {
