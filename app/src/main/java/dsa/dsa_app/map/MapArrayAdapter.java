@@ -9,8 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 import dsa.dsa_app.R;
@@ -20,8 +18,9 @@ public class MapArrayAdapter extends ArrayAdapter<String> {
         super(context, 0, resource);
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, View convertView, @NonNull ViewGroup parent){
         String currentname = getItem(position);
 
         if(convertView == null){

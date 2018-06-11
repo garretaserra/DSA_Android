@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import org.json.JSONObject;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,13 +12,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.logging.Logger;
 
-import dsa.dsa_app.map.Views.*;
 import dsa.dsa_app.map.celdas.Celda;
 
 public class Mapa {
 
     @JsonView(Views.Normal.class)
-    private ArrayList<ArrayList<Celda>> celdas = new ArrayList<ArrayList<Celda>>();
+    private ArrayList<ArrayList<Celda>> celdas = new ArrayList<>();
 
     @JsonView(Views.Normal.class)
     private String nombre;

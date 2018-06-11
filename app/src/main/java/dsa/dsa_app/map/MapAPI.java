@@ -1,7 +1,5 @@
 package dsa.dsa_app.map;
-import android.content.res.Resources;
 
-import dsa.dsa_app.R;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

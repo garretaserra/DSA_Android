@@ -96,7 +96,7 @@ public class Register extends AppCompatActivity {
                             if(response.isSuccessful()){ //pongo toda la funcion cuando me funciona el retrofit
                                 boolean r = response.body().booleanValue();
 
-                                if (r == true) {
+                                if (r) {
                                     Intent i = new Intent(getApplicationContext(), UserMain.class);
                                     startActivity(i);
                                 }

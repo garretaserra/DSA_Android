@@ -1,22 +1,16 @@
 package dsa.dsa_app;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ListView;
 
 import java.util.List;
 
 import dsa.dsa_app.map.MapAPI;
-import dsa.dsa_app.map.MapAPII;
 import dsa.dsa_app.map.MapArrayAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MapList extends AppCompatActivity {
 
