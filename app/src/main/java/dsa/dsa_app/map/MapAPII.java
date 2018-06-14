@@ -13,5 +13,5 @@ public interface MapAPII {
     Call<List<String>> getMapList();
 
     @GET("map/getbyname/")
-    Call<Map> getMap(@Body String nombremapa);
+    Call<Mapa> getMap(@Body String nombremapa);
 }

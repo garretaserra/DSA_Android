@@ -38,25 +38,16 @@ public class Mapa {
     }
     public Mapa(){}
 
-    public void mostrarMapa(){
-        for (List<Celda> celda : getCeldas()) {
-            for (Celda c : celda) {
-                System.out.print(c.getLetra());
-            }
-            System.out.println();
-        }
-    }
-
     public void guardarMapa() throws IOException {
-        File f = new File("./maven/src/main/resources/Mapas/");
+        /*File f = new File("./maven/src/main/resources/Mapas/");
         if (!f.exists()) {
             f.createNewFile();
             logger.info("File with name: " + this.nombre + ".txt created for map.");
-        }
+        }*/
         ObjectMapper om = new ObjectMapper();
         try {
             om.writerWithView(Views.Normal.class).writeValue(
-                    new File("./maven/src/main/resources/Mapas/" + this.nombre + ".txt"), this);
+                    new File(getNombre() + ".txt"), this);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -67,7 +58,7 @@ public class Mapa {
         SimpleModule sm = new SimpleModule("CeldaDeserializer", new Version(1,0,0,null,null,null));
         sm.addDeserializer(Celda.class, new CeldaDeserializer());
         om.registerModule(sm);
-        Mapa m = om.readValue(new File("./maven/src/main/resources/Mapas/"+this.nombre+".txt"), Mapa.class);
+        Mapa m = om.readValue(new File(getNombre()+".txt"), Mapa.class);
         this.nombre = m.nombre;
         this.celdas = m.celdas;
         this.altura = m.altura;

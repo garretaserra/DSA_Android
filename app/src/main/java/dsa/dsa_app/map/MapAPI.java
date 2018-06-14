@@ -8,7 +8,7 @@ public class MapAPI {
     private static MapAPII instance;
 
     private MapAPI(){
-        String baseURL = "http://" + "192.168.42.123" + ":8080/myapp/";
+        String baseURL = "http://" + "192.168.42.101" + ":8080/myapp/";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseURL)
                 .addConverterFactory(GsonConverterFactory.create())
