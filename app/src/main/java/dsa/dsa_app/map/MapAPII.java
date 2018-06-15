@@ -6,6 +6,7 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface MapAPII {
 
@@ -13,5 +14,5 @@ public interface MapAPII {
     Call<List<String>> getMapList();
 
     @GET("map/getbyname/")
-    Call<Mapa> getMap(@Body String nombremapa);
+    Call<Mapa> getMap(@Query("nombremapa") String nombremapa);
 }
