@@ -3,26 +3,52 @@ package dsa.dsa_app.rest;
 import dsa.dsa_app.map.Views;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.Expose;
 
 
 public class Usuario {
 
     @JsonView(Views.Normal.class)
+    @SerializedName("id")
+    @Expose
     private int id;
+
     @JsonView(Views.Normal.class)
+    @SerializedName("nombre")
+    @Expose
     private String nombre;
+
     @JsonView(Views.Normal.class)
+    @SerializedName("password")
+    @Expose
     private String password;
+
     @JsonView(Views.Normal.class)
+    @SerializedName("email")
+    @Expose
     private String email;
+
     @JsonView(Views.Normal.class)
+    @SerializedName("Obj1")
+    @Expose
     private int Obj1;
+
     @JsonView(Views.Normal.class)
+    @SerializedName("Obj2")
+    @Expose
     private int Obj2;
+
     @JsonView(Views.Normal.class)
+    @SerializedName("Obj3")
+    @Expose
     private int Obj3;
+
     @JsonView(Views.Normal.class)
+    @SerializedName("Obj4")
+    @Expose
     private int Obj4;
+
 
     //Constructores
 

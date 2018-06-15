@@ -70,6 +70,19 @@ public class LogIn extends AppCompatActivity {
         pb1.setVisibility(ProgressBar.INVISIBLE);
     }
 
+    public void game(View view) {
+        //inici de la tasca
+        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
+        pb1.setVisibility(ProgressBar.VISIBLE);
+
+
+        Intent intent = new Intent(this, Game.class);
+        startActivity(intent);
+
+        //al final de la tasca
+        pb1.setVisibility(ProgressBar.INVISIBLE);
+    }
+
     public void loginServer(View view){ //editar este campo para conectar con Servidor
 
       /*  mapServices.getLogIn().enqueue( //funcion que he definido
