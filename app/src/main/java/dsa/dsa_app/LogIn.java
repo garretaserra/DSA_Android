@@ -1,20 +1,18 @@
 package dsa.dsa_app;
 
+import android.support.v4.app.DialogFragment;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+
 
 import dsa.dsa_app.rest.MapRest;
-import dsa.dsa_app.rest.Usuario;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -44,6 +42,7 @@ public class LogIn extends AppCompatActivity {
         email = (EditText) findViewById (R.id.email); // poner el nombre de la cajita de texto "editText..."
         passw = (EditText) findViewById (R.id.passw);
 
+
         //start API
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseURL)
@@ -59,6 +58,9 @@ public class LogIn extends AppCompatActivity {
         //inici de la tasca
         pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
         pb1.setVisibility(ProgressBar.VISIBLE);
+
+        DialogFragment dialog = new Dialog();
+        dialog.show(getSupportFragmentManager(),"dialogo");
 
 
         Intent intent = new Intent(this, Register.class);
