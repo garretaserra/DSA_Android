@@ -1,6 +1,8 @@
 package dsa.dsa_app.rest;
 
+import dsa.dsa_app.Register;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface MapRest {
@@ -9,7 +11,10 @@ public interface MapRest {
     Call<Usuario> getLogIn();
 
     @POST("map/ crearUsuario/")
-    Call<Boolean> getCrearUsuario();
+    Observable<Response<tuUsuario>> crearUsuario(@Body Register signIn);
+    //Call <ModelClass> getCrearUsuario();
+
+
 
 
 }

@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import dsa.dsa_app.rest.MapRest;
 import dsa.dsa_app.rest.Usuario;
 import retrofit2.Call;
@@ -18,21 +20,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Register extends AppCompatActivity {
 
     //Base URL of server
-    public static final String baseURL = "http://192.168.42.209:8080/myapp/";
+    public static final String baseURL = "http://192.168.1.41:8080/myapp/";
+    //public static final String baseURL = "http://192.168.42.209:8080/myapp/";
     private MapRest mapServices; //modifico con nombre interfaz
 
     EditText name;
     EditText email;
     EditText passw;
     EditText passw2;
-    String res;
-    String passw3;
-    String passw4;
-    String email1;
+
     String emailinfo;
     String passinfo;
+
+    String res;
+
     String nameinfo;
-    String nameinfo2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,26 +43,23 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         this.setTitle("Register");
 
+        name = (EditText) findViewById (R.id.nom);
+        email = (EditText) findViewById (R.id.email); // poner el nombre de la cajita de texto "editText..."
+        passw = (EditText) findViewById (R.id.passw);
+        passw2 = (EditText) findViewById (R.id.passw2);
+
         Intent intent = getIntent();
-        emailinfo = intent.getStringExtra("email2");
-        passinfo = intent.getStringExtra("passw2");
-        nameinfo2 = intent.getStringExtra("name");
+        emailinfo = intent.getStringExtra("email1");
+        passinfo = intent.getStringExtra("passw1");
 
         if (emailinfo != null) {
             //TextView n = (TextView) findViewById(R.id.myemail);
             //n.setText("Email: "+emailinfo);
-            EditText n = (EditText) findViewById(R.id.email);
-            n.setText(emailinfo);
+            email.setText(emailinfo);
         }
 
         if (passinfo != null){
-            EditText p = (EditText) findViewById(R.id.passw);
-            p.setText(passinfo);
-        }
-
-        if (nameinfo2 != null){
-            EditText p = (EditText) findViewById(R.id.nom);
-            p.setText(nameinfo2);
+            passw.setText(passinfo);
         }
 
         else{}
@@ -73,32 +73,40 @@ public class Register extends AppCompatActivity {
 
     }
 
-    public void creaServer(View view) {
-        //Guardo en variables lo que el usuario ecribe en la app en cada textBox
+    public void creaServer(String nombre, String password, String password2, String correo) {
 
-        name = (EditText) findViewById (R.id.nom);
-        email = (EditText) findViewById (R.id.email); // poner el nombre de la cajita de texto "editText..."
-        passw = (EditText) findViewById (R.id.passw);
-        passw2 = (EditText) findViewById (R.id.passw2);
+        Usuario u = new Usuario(nombre, password, correo);
 
-        passw3 = "3"+passw.getText();
-        passw4 = "3"+passw2.getText();
-        email1 = ""+email.getText();
+        emailinfo = ""+email.getText();
         nameinfo = ""+name.getText();
 
-        if (passw3.equals(passw4))
-        {
+        if(passw.getText().equals(passw2.getText()))
+        {/*
             //conecto con servidor y hago función register
             mapServices.getCrearUsuario().enqueue( //funcion que he definido
-                    new Callback<Boolean>(){ //pongo lo que retorno
+                    new Callback()<ModelClass>{ //pongo lo que retorno
                         @Override
-                        public void onResponse(Call<Boolean> call, Response<Boolean> response){
+                        public void onResponse(Call <ModelClass> call, Response <ModelClass> response){
                             if(response.isSuccessful()){ //pongo toda la funcion cuando me funciona el retrofit
-                                boolean r = response.body().booleanValue();
+                                //boolean r = response.body().booleanValue();
+                                Toast a = Toast.makeText(getApplicationContext(), "Conexion bien", Toast.LENGTH_LONG);
+                                a.show();
 
-                                if (r) {
+                                if (response.code()==201) {
+                                    Toast t = Toast.makeText(getApplicationContext(), "Registered", Toast.LENGTH_LONG);
+                                    t.show();
                                     Intent i = new Intent(getApplicationContext(), UserMain.class);
                                     startActivity(i);
+                                }
+
+                                else if (response.code()==403) {
+                                    Toast t = Toast.makeText(getApplicationContext(), "Error on registration", Toast.LENGTH_LONG);
+                                    t.show();
+                                }
+
+                                else if (response.code()==400) {
+                                    Toast t = Toast.makeText(getApplicationContext(), "Passwords doesn't match", Toast.LENGTH_LONG);
+                                    t.show();
                                 }
 
                                 else {
@@ -108,14 +116,18 @@ public class Register extends AppCompatActivity {
                             }
                             else{
                                 //Logger
+                                Toast t = Toast.makeText(getApplicationContext(), "Fallo de conexion", Toast.LENGTH_LONG);
+                                t.show();
                             }
                         }
                         @Override
-                        public void onFailure(Call<Boolean> call, Throwable t){
+                        public void onFailure(Call <ModelClass> call, Throwable t){
                             //Logger
+                            Toast a = Toast.makeText(getApplicationContext(), "Fallo de conexion2", Toast.LENGTH_LONG);
+                            a.show();
                         }
                     }
-            );
+            );*/
         }
 
         else
@@ -126,19 +138,11 @@ public class Register extends AppCompatActivity {
     }
 
     public void actualizaServer(View view) {
-        //Guardo en variables lo que el usuario ecribe en la app en cada textBox
-        name = (EditText) findViewById (R.id.nom);
-        email = (EditText) findViewById (R.id.email); // poner el nombre de la cajita de texto "editText..."
-        passw = (EditText) findViewById (R.id.passw);
-        passw2 = (EditText) findViewById (R.id.passw2);
 
-        passw3 = "3"+passw.getText();
-        passw4 = "3"+passw2.getText();
-        email1 = ""+email.getText();
+        emailinfo = ""+email.getText();
         nameinfo = ""+name.getText();
 
-
-        if (passw3.equals(passw4)) {
+        if(passw.getText().equals(passw2.getText())) {
             //conecto con servidor y hago función register
             mapServices.getLogIn().enqueue( //funcion que he definido
                     new Callback<Usuario>(){ //pongo lo que retorno

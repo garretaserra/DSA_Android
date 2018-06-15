@@ -4,8 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:background="@drawable/fondo"
-    tools:context="dsa.dsa_app.LogIn">
+    android:background="@drawable/fondo"
+    tools:context=".LogIn">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="e-mail"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <EditText
         android:id="@+id/email"
@@ -29,43 +43,49 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPassword"
         android:textColor="@android:color/background_light"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
         android:id="@+id/Log_in"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="88dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginRight="32dp"
         android:layout_marginTop="81dp"
         android:background="@drawable/button2"
         android:onClick="loginServer"
         android:text="Log in"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passw" />
+        app:layout_constraintTop_toBottomOf="@+id/passw"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button3"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="118dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="81dp"
         android:background="@drawable/button2"
         android:onClick="registerServer"
         android:text="Nou Usuari"
-        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/Log_in"
-        app:layout_constraintTop_toBottomOf="@+id/passw" />
+        app:layout_constraintTop_toBottomOf="@+id/passw"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView17"
@@ -73,12 +93,24 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="8dp"
         android:text="password"
         android:textColor="@android:color/background_light"
         app:layout_constraintHorizontal_bias="0.028"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passw" />
+
+    <ProgressBar
+        android:id="@+id/indeterminateBar"
+        android:layout_width="246dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

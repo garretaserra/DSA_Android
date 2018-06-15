@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import dsa.dsa_app.rest.MapRest;
 import dsa.dsa_app.rest.Usuario;
@@ -19,14 +21,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LogIn extends AppCompatActivity {
 
     //Base URL of server
-    public static final String baseURL = "http://192.168.42.209:8080/myapp/";
+    public static final String baseURL = "http://192.168.1.41:8080/myapp/";
+    //public static final String baseURL = "http://192.168.42.209:8080/myapp/";
     private MapRest mapServices; //modifico con nombre interfaz
 
     EditText email;
     EditText passw;
     int res;
-    String email1;
-    String passw1;
+
+    ProgressBar pb1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,8 @@ public class LogIn extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
         this.setTitle("Log in");
+
+        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
 
         email = (EditText) findViewById (R.id.email); // poner el nombre de la cajita de texto "editText..."
         passw = (EditText) findViewById (R.id.passw);
@@ -51,15 +56,23 @@ public class LogIn extends AppCompatActivity {
 
 
     public void registerServer(View view) {
+        //inici de la tasca
+        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
+        pb1.setVisibility(ProgressBar.VISIBLE);
+
+
         Intent intent = new Intent(this, Register.class);
-        intent.putExtra("email2", email1);
-        intent.putExtra("passw2", passw1);
+        intent.putExtra("email1", email.getText().toString());
+        intent.putExtra("passw1", passw.getText().toString());
         startActivity(intent);
+
+        //al final de la tasca
+        pb1.setVisibility(ProgressBar.INVISIBLE);
     }
 
     public void loginServer(View view){ //editar este campo para conectar con Servidor
 
-        mapServices.getLogIn().enqueue( //funcion que he definido
+      /*  mapServices.getLogIn().enqueue( //funcion que he definido
                 new Callback<Usuario>(){ //pongo lo que retorno
                     @Override
                     public void onResponse(Call<Usuario> call, Response<Usuario> response){
@@ -77,6 +90,6 @@ public class LogIn extends AppCompatActivity {
                         //Logger
                     }
                 }
-        );
+        );*/
     }
 }
