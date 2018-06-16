@@ -17,7 +17,10 @@ public interface MapRest {
     @POST("map/userLogin/")
     Call<Usuario> getLogIn();
 
-    @POST("funciones/crearUsuario")
+    @POST("funciones/consultarUsuario2")
+    Call<Boolean> consultarUsuario (@Body Usuario u);
+
+    @POST("funciones/crearUsuario2")
     //@FormUrlEncoded
     Call<Boolean> crearUsuario (@Body Usuario u);
 

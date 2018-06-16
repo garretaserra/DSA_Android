@@ -5,14 +5,14 @@ import dsa.dsa_app.map.Views;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.annotations.Expose;
+import java.io.Serializable;
 
-
-public class Usuario {
+public class Usuario implements Serializable {
 
     @JsonView(Views.Normal.class)
     @SerializedName("id")
     @Expose
-    private int id;
+    private int id=1;
 
     @JsonView(Views.Normal.class)
     @SerializedName("nombre")
@@ -74,9 +74,14 @@ public class Usuario {
         this.Obj4=0;
     }
 
+    public Usuario (String nombre, String pass){
+        new Usuario(id+1,""+nombre,""+pass,null,null,0);
+    }
+
     public Usuario(String nombre, String password, String email){
         //funcio per que en les proves on no es posa un id el codi no peti
-        new Usuario(1, nombre,password,email,imagen,ultimaposicion);
+        new Usuario(id+0, ""+ nombre, ""+password,""+email,null,0);
+        id++;
     }
 
     public Usuario(){
