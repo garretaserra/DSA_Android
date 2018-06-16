@@ -38,4 +38,8 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.5'
 
     implementation 'log4j:log4j:1.2.17'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    implementation 'com.squareup.okhttp:okhttp:2.4.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
 }

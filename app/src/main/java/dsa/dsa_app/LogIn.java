@@ -38,6 +38,8 @@ public class LogIn extends AppCompatActivity {
         this.setTitle("Log in");
 
         pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
+        //al final de la tasca
+        pb1.setVisibility(ProgressBar.INVISIBLE);
 
         email = (EditText) findViewById (R.id.email); // poner el nombre de la cajita de texto "editText..."
         passw = (EditText) findViewById (R.id.passw);
@@ -68,8 +70,6 @@ public class LogIn extends AppCompatActivity {
         intent.putExtra("passw1", passw.getText().toString());
         startActivity(intent);
 
-        //al final de la tasca
-        pb1.setVisibility(ProgressBar.INVISIBLE);
     }
 
     public void game(View view) {
