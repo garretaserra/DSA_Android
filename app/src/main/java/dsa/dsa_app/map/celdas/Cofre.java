@@ -1,22 +1,20 @@
 package dsa.dsa_app.map.celdas;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
+import dsa.dsa_app.App;
 import dsa.dsa_app.R;
 import dsa.dsa_app.map.Views;
 
 public class Cofre extends Celda {
 
-    @Override
-    @JsonView(Views.Normal.class)
-    public String getNombre() {
-        return "Cofre";
-    }
+    private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(),R.drawable.cofre_cerrado);
 
     @Override
-    public int getResource() {
-        return R.drawable.cofre_cerrado;
+    public Bitmap getResource() {
+        return bmp;
     }
-
-    public Cofre(){}
 }

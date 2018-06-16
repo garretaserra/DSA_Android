@@ -2,7 +2,7 @@ package dsa.dsa_app.map;
 import android.graphics.Canvas;
 
 public class GameLoopThread extends Thread {
-    static final long FPS = 15;
+    static final long FPS = 25;
     private GameView view;
     private boolean running = false;
 

@@ -1,22 +1,21 @@
 package dsa.dsa_app.map.celdas;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
+import dsa.dsa_app.App;
 import dsa.dsa_app.R;
 import dsa.dsa_app.map.Views;
 
 public class Rio extends Celda {
 
-    private String letra = "R";
+    private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(),R.drawable.agua);
 
     @Override
-    @JsonView(Views.Normal.class)
-    public String getNombre() {
-        return "Rio";
+    public Bitmap getResource() {
+        return bmp;
     }
 
-    @Override
-    public int getResource() {
-        return R.drawable.agua;
-    }
 }

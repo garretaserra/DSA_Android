@@ -1,22 +1,21 @@
 package dsa.dsa_app.map.celdas;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
+import dsa.dsa_app.App;
 import dsa.dsa_app.R;
 import dsa.dsa_app.map.Views;
 
 public class Arbol extends Celda {
 
-    @Override
-    @JsonView(Views.Normal.class)
-    public String getNombre() {
-        return "Arbol";
-    }
+    private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(),R.drawable.arbol);
 
     @Override
-    public int getResource() {
-        return R.drawable.arbol;
+    public Bitmap getResource() {
+        return bmp;
     }
-
 
 }

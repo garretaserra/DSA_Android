@@ -1,22 +1,21 @@
 package dsa.dsa_app.map.celdas;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
+import dsa.dsa_app.App;
 import dsa.dsa_app.R;
 import dsa.dsa_app.map.Views;
 
 public class Camino extends Celda {
 
-    @Override
-    @JsonView(Views.Normal.class)
-    public String getNombre() {
-        return "Camino";
-    }
+    private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(),R.drawable.camino_de_tierra);
 
     @Override
-    public int getResource() {
-        return R.drawable.camino_de_tierra;
+    public Bitmap getResource() {
+        return bmp;
     }
-
 
 }
