@@ -71,7 +71,6 @@ public class LogIn extends AppCompatActivity {
         intent.putExtra("email1", email.getText().toString());
         intent.putExtra("passw1", passw.getText().toString());
         startActivity(intent);
-
     }
 
     public void game(View view) {
@@ -79,12 +78,8 @@ public class LogIn extends AppCompatActivity {
         pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
         pb1.setVisibility(ProgressBar.VISIBLE);
 
-
-        Intent intent = new Intent(this, Game.class);
-        startActivity(intent);
-
-        //al final de la tasca
-        pb1.setVisibility(ProgressBar.INVISIBLE);
+        Intent i = new Intent(this, Game.class);
+        startActivity(i);
     }
 
     public void loginServer(View view){ //editar este campo para conectar con Servidor
@@ -113,6 +108,7 @@ public class LogIn extends AppCompatActivity {
                                     Toast t = Toast.makeText(getApplicationContext(), "Logged, code:" + response.code(), Toast.LENGTH_LONG);
                                     t.show();
                                     Intent i = new Intent(getApplicationContext(), UserMain.class);
+                                    i.putExtra("email1", email.getText().toString());
                                     startActivity(i);
                                     //al final de la tasca
                                     pb1.setVisibility(ProgressBar.INVISIBLE);

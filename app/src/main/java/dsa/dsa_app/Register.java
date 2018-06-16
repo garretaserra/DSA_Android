@@ -4,16 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import org.json.JSONObject;
 import dsa.dsa_app.rest.MapRest;
 import dsa.dsa_app.rest.Usuario;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,7 +48,7 @@ public class Register extends AppCompatActivity {
         //al final de la tasca
         pb1.setVisibility(ProgressBar.INVISIBLE);
 
-        name = (EditText) findViewById (R.id.nom);
+        name = (EditText) findViewById (R.id.email);
         email = (EditText) findViewById (R.id.email); // poner el nombre de la cajita de texto "editText..."
         passw = (EditText) findViewById (R.id.passw);
         passw2 = (EditText) findViewById (R.id.passw2);
@@ -113,6 +110,7 @@ public class Register extends AppCompatActivity {
                                         Toast t = Toast.makeText(getApplicationContext(), "Registered, code:" + response.code(), Toast.LENGTH_LONG);
                                         t.show();
                                         Intent i = new Intent(getApplicationContext(), UserMain.class);
+                                        i.putExtra("email1", email.getText().toString());
                                         startActivity(i);
                                         //al final de la tasca
                                         pb1.setVisibility(ProgressBar.INVISIBLE);
@@ -181,9 +179,6 @@ public class Register extends AppCompatActivity {
 
         Intent intent = new Intent(this, LogIn.class);
         startActivity(intent);
-
-        //al final de la tasca
-        pb1.setVisibility(ProgressBar.INVISIBLE);
     }
 
     public void actualizaServer(View view) {

@@ -27,12 +27,11 @@
             android:name=".UserInfo"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".UserMain"
-            android:screenOrientation="landscape" />
+            android:name=".UserMain"/>
         <activity android:name=".Register" />
         <activity android:name=".Game"
-            android:screenOrientation="landscape">
-
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 
