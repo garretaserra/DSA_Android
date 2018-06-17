@@ -14,7 +14,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import dsa.dsa_app.R;
+import dsa.dsa_app.map.celdas.Camino;
 import dsa.dsa_app.map.celdas.Celda;
+import dsa.dsa_app.map.celdas.Muro;
+import dsa.dsa_app.map.celdas.Rio;
 import dsa.dsa_app.visuals.Arrows;
 import dsa.dsa_app.visuals.Character;
 import dsa.dsa_app.visuals.Sprite;
@@ -24,6 +27,7 @@ public class GameView extends SurfaceView {
     private List<Sprite> entities = new ArrayList<>();
     private String currentMap;
     private Mapa map;
+    private Canvas mapBackground = new Canvas();
 
     public GameView(Context context) {
         super(context);
@@ -59,8 +63,21 @@ public class GameView extends SurfaceView {
         });
 
         //Adding entities
-        entities.add(new Character(this, BitmapFactory.decodeResource(getResources(), R.drawable.maincharacter)));
+        entities.add(new Character(this, BitmapFactory.decodeResource(getResources(), R.drawable.protagonista)));
         entities.add(new Arrows(this, BitmapFactory.decodeResource(getResources(),R.drawable.arrows)));
+        map = new Mapa();
+        map.setNombre("Proba");
+        ArrayList<ArrayList<Celda>> mapCells = new ArrayList<>();
+        ArrayList<Celda> r1 = new ArrayList<>();
+        for(int i = 0; i<9;i++) {
+            r1.add(new Camino());
+        }
+        for(int i = 0; i<6; i++){
+            mapCells.add(r1);
+        }
+        map.setCeldas(mapCells);
+        map.setAnchura(9);
+        map.setAltura(6);
     }
 
     @Override
@@ -78,25 +95,24 @@ public class GameView extends SurfaceView {
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        canvas.drawColor(Color.WHITE);
+        canvas.drawColor(Color.BLACK);
 
         //Check if map is already loaded
         if(!map.getNombre().equals(currentMap)) {
             //If the map is not loaded, load the map from storage
-            map = Mapa.cargarMapa(currentMap);
+            //map = Mapa.cargarMapa(currentMap);
         }
 
-        int height = canvas.getHeight()/map.getCeldas().size();
-        int width = canvas.getWidth()/map.getCeldas().get(0).size();
+        int height = canvas.getHeight() / map.getCeldas().size();
+        int width = canvas.getWidth() / map.getCeldas().get(0).size();
         //Iteration over all cells to draw each one
-        for(int i = 0; i < map.getCeldas().size(); i++){
-            for(int j = 0; j < map.getCeldas().get(i).size(); j++){
-                Rect r = new Rect(width*j,height*i,width*(j+1),height*(i+1));
-                Bitmap bmp =  BitmapFactory.decodeResource(getResources(),map.getCeldas().get(i).get(j).getResource());
-                canvas.drawBitmap(bmp,null,r,null);
+        for (int i = 0; i < map.getCeldas().size(); i++) {
+            for (int j = 0; j < map.getCeldas().get(i).size(); j++) {
+                Rect r = new Rect(width * j, height * i, width * (j + 1), height * (i + 1));
+                Bitmap bmp = map.getCeldas().get(i).get(j).getResource();
+                canvas.drawBitmap(bmp, null, r, null);
             }
         }
-
 
         //draw entities
         for(Sprite s : entities.stream().filter(x->x.getClass()==Character.class).collect(Collectors.toList())){

@@ -6,28 +6,64 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class UserMain extends AppCompatActivity {
+
+    TextView n;
+    String emailinfo;
+
+    ProgressBar pb1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_main);
-    }
+        this.setTitle("Menu");
 
-    public void playGame(View view){
-        Intent i = new Intent(this, MapList.class);
-        startActivity(i);
+        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
+        //al final de la tasca
+        pb1.setVisibility(ProgressBar.INVISIBLE);
+
+        Intent intent = getIntent();
+        emailinfo = intent.getStringExtra("email1");
+
+        if (emailinfo != null) {
+            n = (TextView) findViewById(R.id.email);
+            n.setText("Email: "+emailinfo);
+        }
     }
 
     public void mapList(View view){
+        //inici de la tasca
+        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
+        pb1.setVisibility(ProgressBar.VISIBLE);
         Intent i = new Intent(this, MapList.class);
         startActivity(i);
     }
 
+    public void game(View view) {
+        //inici de la tasca
+        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
+        pb1.setVisibility(ProgressBar.VISIBLE);
+
+        Intent i = new Intent(this, Game.class);
+        startActivity(i);
+    }
+
+    public void userList(View view){
+        //inici de la tasca
+//        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
+//        pb1.setVisibility(ProgressBar.VISIBLE);
+        //Intent i = new Intent(this, MapList.class);
+        //startActivity(i);
+    }
+
     public void playerInfo(View view){
+        //inici de la tasca
+        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
+        pb1.setVisibility(ProgressBar.VISIBLE);
         Intent i = new Intent(this,UserInfo.class);
         startActivity(i);
     }

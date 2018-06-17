@@ -8,8 +8,8 @@ import dsa.dsa_app.map.GameView;
 
 public class Character extends Sprite {
 
-    int[] DIRECTION_TO_ANIMATION_MAP = { 1, 2, 1, 0 };
-    private static final int BMP_ROWS = 3;
+    int[] DIRECTION_TO_ANIMATION_MAP = { 1, 3, 2, 0 };
+    private static final int BMP_ROWS = 4;
     private static final int BMP_COLUMNS = 3;
     private int posx = 0;
     private int posy = 0;
@@ -46,29 +46,41 @@ public class Character extends Sprite {
         return posy;
     }
 
-    public void update(){
+    public void update(Canvas canvas){
         if(speed!=0) {
             currentFrame = ++currentFrame % BMP_COLUMNS;
         }
         //Change the position depending on the direction of movement
         switch (direction){
             case 0:     //left
-                posx -= speed;
+                if(posx-speed>0)
+                    posx -= speed;
+                else
+                    posx=0;
                 break;
             case 1:     //up
-                posy -= speed;
+                if(posy-speed>0)
+                    posy -= speed;
+                else
+                    posy=0;
                 break;
             case 2:     //right
-                posx += speed;
+                if(posx+speed+width<canvas.getWidth())
+                    posx += speed;
+                else
+                    posx = canvas.getWidth()-width;
                 break;
             case 3:     //down
-                posy += speed;
+                if(posy+speed+height<canvas.getHeight())
+                    posy += speed;
+                else
+                    posy = canvas.getHeight()-height;
                 break;
         }
     }
 
     public void draw(Canvas canvas) {
-        update();
+        update(canvas);
         int srcX = currentFrame * width;
         int srcY = DIRECTION_TO_ANIMATION_MAP[direction] * height;
         Rect src = new Rect(srcX, srcY, srcX + width, srcY + height);

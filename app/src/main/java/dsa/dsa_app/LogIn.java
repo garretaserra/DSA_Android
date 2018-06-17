@@ -1,18 +1,21 @@
 package dsa.dsa_app;
 
-import android.support.v4.app.DialogFragment;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-
+import android.widget.Toast;
 
 import dsa.dsa_app.rest.MapRest;
-
+import dsa.dsa_app.rest.Usuario;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -26,6 +29,9 @@ public class LogIn extends AppCompatActivity {
     EditText email;
     EditText passw;
     int res;
+
+    String emailinfo;
+    String passinfo;
 
     ProgressBar pb1;
 
@@ -44,7 +50,6 @@ public class LogIn extends AppCompatActivity {
         email = (EditText) findViewById (R.id.email); // poner el nombre de la cajita de texto "editText..."
         passw = (EditText) findViewById (R.id.passw);
 
-
         //start API
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseURL)
@@ -61,15 +66,11 @@ public class LogIn extends AppCompatActivity {
         pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
         pb1.setVisibility(ProgressBar.VISIBLE);
 
-        DialogFragment dialog = new Dialog();
-        dialog.show(getSupportFragmentManager(),"dialogo");
-
 
         Intent intent = new Intent(this, Register.class);
         intent.putExtra("email1", email.getText().toString());
         intent.putExtra("passw1", passw.getText().toString());
         startActivity(intent);
-
     }
 
     public void game(View view) {
@@ -77,34 +78,73 @@ public class LogIn extends AppCompatActivity {
         pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
         pb1.setVisibility(ProgressBar.VISIBLE);
 
-
-        Intent intent = new Intent(this, Game.class);
-        startActivity(intent);
-
-        //al final de la tasca
-        pb1.setVisibility(ProgressBar.INVISIBLE);
+        Intent i = new Intent(this, Game.class);
+        startActivity(i);
     }
 
     public void loginServer(View view){ //editar este campo para conectar con Servidor
 
-      /*  mapServices.getLogIn().enqueue( //funcion que he definido
-                new Callback<Usuario>(){ //pongo lo que retorno
-                    @Override
-                    public void onResponse(Call<Usuario> call, Response<Usuario> response){
-                        if(response.isSuccessful()){ //pongo toda la funcion cuando me funciona el retrofit
-                            //EDITAR CON LA RESPUESTA DE DANI
-                            Intent i = new Intent(getApplicationContext(), UserMain.class);
-                            startActivity(i);
+        //inici de la tasca
+        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
+        pb1.setVisibility(ProgressBar.VISIBLE);
+
+        emailinfo = email.getText().toString().trim();
+        passinfo = passw.getText().toString().trim();
+
+        if (!TextUtils.isEmpty(passinfo) && !TextUtils.isEmpty(emailinfo)) {
+                Usuario u = new Usuario(1,""+null, ""+passinfo, ""+emailinfo,""+null, 0);
+
+                //conecto con servidor y hago función register
+                mapServices.consultarUsuario(u).enqueue( //funcion que he definido
+                        new Callback<Boolean>() { //pongo lo que retorno
+                            @Override
+                            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                                int statusCode = response.code();
+
+                                //if (response.isSuccessful()) { //pongo toda la funcion cuando me funciona el retrofit
+                                //boolean r = response.body().booleanValue();
+
+                                if (response.code() == 200) {
+                                    Toast t = Toast.makeText(getApplicationContext(), "Logged, code:" + response.code(), Toast.LENGTH_LONG);
+                                    t.show();
+                                    Intent i = new Intent(getApplicationContext(), UserMain.class);
+                                    i.putExtra("email1", email.getText().toString());
+                                    startActivity(i);
+                                    //al final de la tasca
+                                    pb1.setVisibility(ProgressBar.INVISIBLE);
+                                }
+                                else if (response.code() == 403) {
+                                    Toast t = Toast.makeText(getApplicationContext(), "Error on login, code:" + response.code(), Toast.LENGTH_LONG);
+                                    t.show();
+                                    //al final de la tasca
+                                    pb1.setVisibility(ProgressBar.INVISIBLE);
+                                }
+
+                                else {
+                                    Toast t = Toast.makeText(getApplicationContext(), "Error, code:" + response.code(), Toast.LENGTH_LONG);
+                                    t.show();
+                                    //al final de la tasca
+                                    pb1.setVisibility(ProgressBar.INVISIBLE);
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<Boolean> call, Throwable t) {
+                                //Logger
+                                Toast a = Toast.makeText(getApplicationContext(), "Error on the connexion", Toast.LENGTH_LONG);
+                                a.show();
+                                //al final de la tasca
+                                pb1.setVisibility(ProgressBar.INVISIBLE);
+                            }
                         }
-                        else{
-                            //Logger
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<Usuario> call, Throwable t){
-                        //Logger
-                    }
-                }
-        );*/
+                );
+        }
+        else {
+            Toast t = Toast.makeText(getApplicationContext(), "Hay campos incompletos", Toast.LENGTH_LONG);
+            t.show();
+            //al final de la tasca
+            pb1.setVisibility(ProgressBar.INVISIBLE);
+        }
+
     }
 }

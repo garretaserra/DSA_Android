@@ -1,6 +1,7 @@
 package dsa.dsa_app.map.celdas;
 
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
@@ -13,6 +14,5 @@ import android.graphics.Rect;
 )*/
 public abstract class Celda{
 
-    public abstract String getNombre();
-    public abstract int getResource();
-    }
+    public abstract Bitmap getResource();
+}
