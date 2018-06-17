@@ -9,11 +9,13 @@ import dsa.dsa_app.App;
 import dsa.dsa_app.R;
 import dsa.dsa_app.map.Views;
 
-public class Muro extends Celda {
+public class Agua extends Celda {
 
-    private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(), R.drawable.muro);
+    private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(),R.drawable.agua);
+
     @Override
     public Bitmap getResource() {
         return bmp;
     }
+
 }

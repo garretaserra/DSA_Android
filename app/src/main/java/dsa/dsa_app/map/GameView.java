@@ -14,10 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import dsa.dsa_app.R;
-import dsa.dsa_app.map.celdas.Camino;
-import dsa.dsa_app.map.celdas.Celda;
-import dsa.dsa_app.map.celdas.Muro;
-import dsa.dsa_app.map.celdas.Rio;
+import dsa.dsa_app.map.celdas.*;
 import dsa.dsa_app.visuals.Arrows;
 import dsa.dsa_app.visuals.Character;
 import dsa.dsa_app.visuals.Sprite;
@@ -27,6 +24,7 @@ public class GameView extends SurfaceView {
     private List<Sprite> entities = new ArrayList<>();
     private String currentMap;
     private Mapa map;
+    private Mapa principal;
     private Canvas mapBackground = new Canvas();
 
     public GameView(Context context) {
@@ -55,8 +53,7 @@ public class GameView extends SurfaceView {
             }
 
             @Override
-            public void surfaceChanged(SurfaceHolder holder, int format,
-                                       int width, int height) {
+            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
             }
 
 
@@ -70,7 +67,7 @@ public class GameView extends SurfaceView {
         ArrayList<ArrayList<Celda>> mapCells = new ArrayList<>();
         ArrayList<Celda> r1 = new ArrayList<>();
         for(int i = 0; i<9;i++) {
-            r1.add(new Camino());
+            r1.add(new CaminoTierra());
         }
         for(int i = 0; i<6; i++){
             mapCells.add(r1);
@@ -78,6 +75,94 @@ public class GameView extends SurfaceView {
         map.setCeldas(mapCells);
         map.setAnchura(9);
         map.setAltura(6);
+
+        //Dibujar MAPA PRINCIPAL
+        principal = new Mapa();
+        principal.setNombre("Principal");
+        ArrayList<ArrayList<Celda>> celdasColumnas = new ArrayList<>();
+        ArrayList<Celda> celdasFila = new ArrayList<>();
+        //Elementos de la primera fila
+        celdasFila.add(new Muro());
+        celdasFila.add(new Muro());
+        celdasFila.add(new Muro());
+        celdasFila.add(new Muro());
+        celdasFila.add(new Muro());
+        celdasFila.add(new Muro());
+        celdasFila.add(new Muro());
+        celdasFila.add(new Gruta());
+        celdasFila.add(new Muro());
+        //Añadir la primera columna
+        celdasColumnas.add(celdasFila);
+
+        //Elementos de la segunda fila
+        celdasFila.add(new Arbusto());
+        celdasFila.add(new Banco());
+        celdasFila.add(new Arbusto());
+        celdasFila.add(new Arbusto());
+        celdasFila.add(new Orfanato());
+        celdasFila.add(new Arbusto());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        //Añadir la segunda columna
+        celdasColumnas.add(celdasFila);
+
+        //Elementos de la tercera fila
+        celdasFila.add(new Cespez());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Cespez());
+        celdasFila.add(new Cespez());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Arbol());
+        celdasFila.add(new Arbol());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        //Añadir la tercera columna
+        celdasColumnas.add(celdasFila);
+
+        //Elementos de la cuarta fila
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        //Añadir la cuarta columna
+        celdasColumnas.add(celdasFila);
+
+        //Elementos de la quinta fila
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Cespez());
+        celdasFila.add(new Tienda());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Perrera());
+        celdasFila.add(new Agua());
+        celdasFila.add(new Agua());
+        celdasFila.add(new CaminoTierra());//espacio `para controles
+        celdasFila.add(new CaminoTierra()); //espacio para controles
+        //Añadir la quinta columna
+        celdasColumnas.add(celdasFila);
+
+        //Elementos de la sexta fila
+        celdasFila.add(new Casa());
+        celdasFila.add(new Cespez());
+        celdasFila.add(new Cespez());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra()); //espacio para controles
+        celdasFila.add(new CaminoTierra());  //espacio para controles
+        //Añadir la sexta columna
+        celdasColumnas.add(celdasFila);
+
+        principal.setCeldas(celdasColumnas);
+        principal.setAnchura(9);
+        principal.setAltura(6);
+
     }
 
     @Override
