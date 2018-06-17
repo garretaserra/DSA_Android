@@ -64,6 +64,7 @@ public class GameView extends SurfaceView {
         //Adding entities
         entities.add(new Character(this, BitmapFactory.decodeResource(getResources(), R.drawable.protagonista)));
         entities.add(new Arrows(this, BitmapFactory.decodeResource(getResources(), R.drawable.arrows)));
+       //Dibujar MAPA PRUEVA
         map = new Mapa();
         map.setNombre("Proba");
         ArrayList<ArrayList<Celda>> mapCells = new ArrayList<>();
@@ -95,7 +96,6 @@ public class GameView extends SurfaceView {
         celdasFila.add(new Muro());
         //Añadir la primera columna
         celdasColumnas.add(celdasFila);
-
         //Elementos de la segunda fila
         celdasFila.add(new Arbusto());
         celdasFila.add(new Banco());
@@ -108,7 +108,6 @@ public class GameView extends SurfaceView {
         celdasFila.add(new CaminoTierra());
         //Añadir la segunda columna
         celdasColumnas.add(celdasFila);
-
         //Elementos de la tercera fila
         celdasFila.add(new Cespez());
         celdasFila.add(new CaminoTierra());
@@ -121,7 +120,6 @@ public class GameView extends SurfaceView {
         celdasFila.add(new CaminoTierra());
         //Añadir la tercera columna
         celdasColumnas.add(celdasFila);
-
         //Elementos de la cuarta fila
         celdasFila.add(new CaminoTierra());
         celdasFila.add(new CaminoTierra());
@@ -134,7 +132,6 @@ public class GameView extends SurfaceView {
         celdasFila.add(new CaminoTierra());
         //Añadir la cuarta columna
         celdasColumnas.add(celdasFila);
-
         //Elementos de la quinta fila
         celdasFila.add(new CaminoTierra());
         celdasFila.add(new Cespez());
@@ -147,7 +144,6 @@ public class GameView extends SurfaceView {
         celdasFila.add(new CaminoTierra()); //espacio para controles
         //Añadir la quinta columna
         celdasColumnas.add(celdasFila);
-
         //Elementos de la sexta fila
         celdasFila.add(new Casa());
         celdasFila.add(new Cespez());
@@ -160,13 +156,13 @@ public class GameView extends SurfaceView {
         celdasFila.add(new CaminoTierra());  //espacio para controles
         //Añadir la sexta columna
         celdasColumnas.add(celdasFila);
-
+        //Añadir las columnas al mapa
         principal.setCeldas(celdasColumnas);
         principal.setAnchura(9);
         principal.setAltura(6);
 
 
-        //Mapa interior de orfanato
+        //Dibujar MAPA ORFANATO
         orfanato = new Mapa();
         orfanato.setNombre("orfanato");
         ArrayList<ArrayList<Celda>> celdasColumnas2 = new ArrayList<>();
@@ -183,7 +179,6 @@ public class GameView extends SurfaceView {
         celdasFila2.add(new Muro());
         //Añadir la primera columna
         celdasColumnas2.add(celdasFila2);
-
         //Elementos de la segunda fila
         celdasFila2.add(new Muro());
         celdasFila2.add(new CaminoInterior());
@@ -196,7 +191,6 @@ public class GameView extends SurfaceView {
         celdasFila2.add(new Muro());
         //Añadir la segunda columna
         celdasColumnas2.add(celdasFila2);
-
         //Elementos de la tercera fila
         celdasFila2.add(new Muro());
         celdasFila2.add(new Cama());
@@ -209,8 +203,6 @@ public class GameView extends SurfaceView {
         celdasFila2.add(new Muro());
         //Añadir la tercera columna
         celdasColumnas2.add(celdasFila2);
-
-
         //Elementos de la cuarta fila
         celdasFila2.add(new Muro());
         celdasFila2.add(new CaminoInterior());
@@ -223,7 +215,6 @@ public class GameView extends SurfaceView {
         celdasFila2.add(new Muro());
         //Añadir la cuarta columna
         celdasColumnas2.add(celdasFila2);
-
         //Elementos de la quinta fila
         celdasFila2.add(new Muro());
         celdasFila2.add(new Cama());
@@ -236,7 +227,6 @@ public class GameView extends SurfaceView {
         celdasFila2.add(new Muro()); //espacio para controles
         //Añadir la quinta columna
         celdasColumnas2.add(celdasFila2);
-
         //Elementos de la sexta fila
         celdasFila2.add(new Muro());
         celdasFila2.add(new Muro());
@@ -249,12 +239,12 @@ public class GameView extends SurfaceView {
         celdasFila2.add(new Muro());//espacio para controles
         //Añadir la sexta columna
         celdasColumnas2.add(celdasFila2);
-
+        //Añadir las columnas al mapa
         orfanato.setCeldas(celdasColumnas2);
         orfanato.setAnchura(9);
          orfanato.setAltura(6);
 
-         //Mapa interior del banco
+         //Dibujar MAPA BANCO
         banco = new Mapa();
         banco.setNombre("banco");
         ArrayList<ArrayList<Celda>> celdasColumnas3 = new ArrayList<>();
@@ -271,7 +261,6 @@ public class GameView extends SurfaceView {
         celdasFila3.add(new Muro());
         //Añadir la primera columna
         celdasColumnas3.add(celdasFila3);
-
         //Elementos de la segunda fila
         celdasFila3.add(new Muro());
         celdasFila3.add(new Gris());
@@ -284,7 +273,6 @@ public class GameView extends SurfaceView {
         celdasFila3.add(new Muro());
         //Añadir la segunda columna
         celdasColumnas3.add(celdasFila3);
-
         //Elementos de la tercera fila
         celdasFila3.add(new Muro());
         celdasFila3.add(new Gris());
@@ -297,8 +285,6 @@ public class GameView extends SurfaceView {
         celdasFila3.add(new CaminoInterior());
         //Añadir la tercera columna
         celdasColumnas3.add(celdasFila3);
-
-
         //Elementos de la cuarta fila
         celdasFila3.add(new Muro());
         celdasFila3.add(new Gris());
@@ -311,7 +297,6 @@ public class GameView extends SurfaceView {
         celdasFila3.add(new Muro());
         //Añadir la cuarta columna
         celdasColumnas3.add(celdasFila3);
-
         //Elementos de la quinta fila
         celdasFila3.add(new Muro());
         celdasFila3.add(new Gris());
@@ -324,7 +309,6 @@ public class GameView extends SurfaceView {
         celdasFila3.add(new Muro()); //espacio para controles
         //Añadir la quinta columna
         celdasColumnas3.add(celdasFila3);
-
         //Elementos de la sexta fila
         celdasFila3.add(new Muro());
         celdasFila3.add(new Muro());
@@ -337,12 +321,10 @@ public class GameView extends SurfaceView {
         celdasFila3.add(new Muro());//espacio para controles
         //Añadir la sexta columna
         celdasColumnas3.add(celdasFila3);
-
+        //Añadir columnas al mapa
         banco.setCeldas(celdasColumnas3);
         banco.setAnchura(9);
         banco.setAltura(6);
-
-
     }
         @Override
         public boolean onTouchEvent (MotionEvent event){
