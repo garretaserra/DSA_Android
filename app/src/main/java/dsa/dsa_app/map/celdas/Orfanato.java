@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 
 import dsa.dsa_app.App;
 import dsa.dsa_app.R;
+import dsa.dsa_app.map.GameView;
 
 public class Orfanato extends Celda {
     private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(), R.drawable.orfanato);
@@ -15,7 +16,10 @@ public class Orfanato extends Celda {
     }
 
     @Override
-    public boolean canWalkThrough() {
-        return false;
+    public boolean canWalkThrough(){return false;}
+
+    @Override
+    public void onTouch(GameView gameView){
+        GameView.changeMapTo("orfanato");
     }
 }

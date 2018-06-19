@@ -2,9 +2,12 @@ package dsa.dsa_app.map.celdas;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.widget.Toast;
 
 import dsa.dsa_app.App;
 import dsa.dsa_app.R;
+import dsa.dsa_app.map.GameView;
+import dsa.dsa_app.visuals.Objeto;
 
 public class Casa extends Celda {
     private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(), R.drawable.casa);
@@ -17,5 +20,10 @@ public class Casa extends Celda {
     @Override
     public boolean canWalkThrough() {
         return false;
+    }
+
+    @Override
+    public void onTouch(GameView gameView) {
+
     }
 }

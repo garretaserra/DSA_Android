@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/DSA_Android.iml" filepath="$PROJECT_DIR$/.idea/DSA_Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/DSA_Android.iml" filepath="$PROJECT_DIR$/DSA_Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DSA_ProyectoAndroid.iml" filepath="$PROJECT_DIR$/DSA_ProyectoAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/DSA_Proyecto_Android.iml" filepath="$PROJECT_DIR$/DSA_Proyecto_Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
