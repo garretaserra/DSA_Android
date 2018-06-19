@@ -13,6 +13,7 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 import dsa.dsa_app.map.celdas.Celda;
+import dsa.dsa_app.visuals.Sprite;
 
 public class Mapa {
 
@@ -20,6 +21,7 @@ public class Mapa {
     private String nombre;
     private int altura;
     private int anchura;
+    private List<Sprite> entities = new ArrayList<>();
     private Logger logger = Logger.getLogger(Mapa.class.getName());
 
     public Mapa(String nombre, int altura, int anchura){
@@ -86,5 +88,13 @@ public class Mapa {
         this.setAltura(celdas.size());
         this.setAnchura(celdas.get(0).size());
         return true;
+    }
+
+    public List<Sprite> getEntities() {
+        return entities;
+    }
+
+    public void setEntities(List<Sprite> entities) {
+        this.entities = entities;
     }
 }

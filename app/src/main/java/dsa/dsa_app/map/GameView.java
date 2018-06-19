@@ -65,7 +65,6 @@ public class GameView extends SurfaceView {
         //Adding entities
         entities.add(new Character(this, BitmapFactory.decodeResource(getResources(), R.drawable.protagonista)));
         entities.add(new Arrows(this, BitmapFactory.decodeResource(getResources(), R.drawable.arrows)));
-        entities.add(new Cofre(200,200));
 
         //Dibujar MAPA PRINCIPAL 12x18
         principal = new Mapa();
@@ -279,7 +278,7 @@ public class GameView extends SurfaceView {
         principalColumnas.add(principalFila12);
         //Añadir las columnas al mapa
         principal.setCeldas(principalColumnas);
-
+        principal.getEntities().add(new Cofre(200,200));
 
 
         //Dibujar MAPA ORFANATO
@@ -477,7 +476,7 @@ public class GameView extends SurfaceView {
             }
 
             //draw map objects
-            for (Sprite s : entities.stream().filter(x -> x.getClass() == Cofre.class).collect(Collectors.toList())) {
+            for (Sprite s : map.getEntities()) {
                 s.draw(canvas);
             }
 
