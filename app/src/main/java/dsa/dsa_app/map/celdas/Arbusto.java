@@ -21,6 +21,6 @@ public class Arbusto extends Celda {
 
     @Override
     public boolean canWalkThrough() {
-        return true;
+        return false;
     }
 }

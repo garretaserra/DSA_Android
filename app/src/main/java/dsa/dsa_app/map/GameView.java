@@ -17,6 +17,7 @@ import dsa.dsa_app.R;
 import dsa.dsa_app.map.celdas.*;
 import dsa.dsa_app.visuals.Arrows;
 import dsa.dsa_app.visuals.Character;
+import dsa.dsa_app.visuals.Cofre;
 import dsa.dsa_app.visuals.Sprite;
 
 public class GameView extends SurfaceView {
@@ -64,6 +65,7 @@ public class GameView extends SurfaceView {
         //Adding entities
         entities.add(new Character(this, BitmapFactory.decodeResource(getResources(), R.drawable.protagonista)));
         entities.add(new Arrows(this, BitmapFactory.decodeResource(getResources(), R.drawable.arrows)));
+        entities.add(new Cofre(200,200));
 
         //Dibujar MAPA PRINCIPAL 12x18
         principal = new Mapa();
@@ -344,7 +346,7 @@ public class GameView extends SurfaceView {
         }
         orfanatoFila5.add(new Muro()); //espacio para controles
         //Añadir la quinta columna
-       principalColumnas.add( orfanatoFila5);
+        orfanatoColumnas.add(orfanatoFila5);
 
         //Elementos de la sexta fila
         for (int i = 0; i<4; i++) {
@@ -355,7 +357,7 @@ public class GameView extends SurfaceView {
             orfanatoFila6.add(new Muro());
         }
         //Añadir la sexta columna
-        principalColumnas.add(orfanatoFila6);
+        orfanatoColumnas.add(orfanatoFila6);
         //Añadir las columnas al mapa
         orfanato.setCeldas(principalColumnas);
 
@@ -472,6 +474,11 @@ public class GameView extends SurfaceView {
                     Bitmap bmp = map.getCeldas().get(i).get(j).getResource();
                     canvas.drawBitmap(bmp, null, r, null);
                 }
+            }
+
+            //draw map objects
+            for (Sprite s : entities.stream().filter(x -> x.getClass() == Cofre.class).collect(Collectors.toList())) {
+                s.draw(canvas);
             }
 
             //draw entities
