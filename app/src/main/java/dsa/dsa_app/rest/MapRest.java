@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 
 public interface MapRest {
 
-    @POST("map/userLogin/")
+    @POST("funciones/userLogin/")
     Call<Usuario> getLogIn();
 
     @POST("funciones/consultarUsuario2")
