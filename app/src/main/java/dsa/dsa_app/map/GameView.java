@@ -383,11 +383,9 @@ public class GameView extends SurfaceView {
         bancoColumnas.add(bancoFila1);
 
         //Elementos de la segunda fila
-        bancoFila2.add(new Muro());
-        for (int i = 0; i<7; i++) {
-            bancoFila2.add(new Muro());
+        for (int i = 0; i<9; i++) {
+            bancoFila2.add(new Gris());
         }
-        bancoFila2.add(new Muro());
         //Añadir la segunda columna
         bancoColumnas.add(bancoFila2);
 
@@ -427,11 +425,10 @@ public class GameView extends SurfaceView {
         bancoColumnas.add(bancoFila5);
 
         //Elementos de la sexta fila
-        bancoFila6.add(new Muro());
         for (int i = 0; i<7; i++) {
-            bancoFila6.add(new Puerta());
+            bancoFila6.add(new Muro());
         }
-        bancoFila6.add(new Muro());
+        bancoFila6.add(new Puerta());
         //Añadir la sexta columna
         bancoColumnas.add(bancoFila4);
 
