@@ -5,17 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="dsa.dsa_app.Splash_Screen"
+    android:background="#0cc3b3"
    >
 
-    <layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
-        <!-- The background color, preferably the same as your normal theme -->
-        <item android:drawable="@android:color/white"/>
-        <!-- Your product logo - 144dp color version of your app icon -->
-        <item>
-            <bitmap
-                android:src="@drawable/splash.jpg"
-                android:gravity="center"/>
-        </item>
-    </layer-list>
+
 
 </android.support.constraint.ConstraintLayout>
