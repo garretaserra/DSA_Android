@@ -60,7 +60,16 @@ public class UserMain extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void playerInfo(View view){
+    public void myPlayerInfo(View view){
+        //inici de la tasca
+        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
+        pb1.setVisibility(ProgressBar.VISIBLE);
+        Intent i = new Intent(this,UserInfo.class);
+        i.putExtra("email1", n.getText().toString());
+        startActivity(i);
+    }
+
+    public void anyPlayerInfo(View view){
         //inici de la tasca
         pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
         pb1.setVisibility(ProgressBar.VISIBLE);

@@ -8,6 +8,20 @@
     tools:context=".UserMain">
 
     <Button
+        android:id="@+id/busqueda2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="121dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="32dp"
+        android:background="@drawable/button"
+        android:onClick="userList"
+        android:text="List of users"
+        app:layout_constraintBottom_toTopOf="@+id/busqueda"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/busqueda"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="121dp"
@@ -15,8 +29,8 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="32dp"
         android:background="@drawable/button"
-        android:onClick="userList"
-        android:text="List of users"
+        android:onClick="anyPlayerInfo"
+        android:text="Users detail"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -25,14 +39,15 @@
         android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
 
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/ActualitzaDades"
+        app:layout_constraintBottom_toTopOf="@+id/busqueda2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email"
         app:srcCompat="@drawable/main_playerask" />
@@ -43,28 +58,29 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:text="E-mail:"
         android:textColor="@android:color/background_light"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ActualitzaDades" />
 
     <Button
         android:id="@+id/ActualitzaDades"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/button"
-        android:onClick="playerInfo"
+        android:onClick="myPlayerInfo"
         android:text="My information"
-        app:layout_constraintBottom_toTopOf="@+id/busqueda"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/Busqueda"

@@ -31,6 +31,9 @@ public class ListOfUsers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_users);
 
+        //al final de la tasca
+        pb1.setVisibility(ProgressBar.INVISIBLE);
+
         //start API
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseURL)
