@@ -118,9 +118,15 @@ public class Mapa {
         return celdas;
     }
 
-    public void setCeldas(ArrayList<ArrayList<Celda>> celdas) {
+    public boolean setCeldas(ArrayList<ArrayList<Celda>> celdas) {
+        int columns = celdas.get(0).size();
+        for(List<Celda> list : celdas){
+            if(list.size()!=columns)
+                return false;
+        }
         this.celdas = celdas;
         this.setAltura(celdas.size());
         this.setAnchura(celdas.get(0).size());
+        return true;
     }
 }
