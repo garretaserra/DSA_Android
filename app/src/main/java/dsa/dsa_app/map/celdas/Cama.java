@@ -12,6 +12,10 @@ public class Cama extends Celda {
     @Override
     public Bitmap getResource() {
         return null;
-                //bmp;
+    }
+
+    @Override
+    public boolean canWalkThrough() {
+        return false;
     }
 }

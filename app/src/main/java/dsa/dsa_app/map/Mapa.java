@@ -97,13 +97,13 @@ public class Mapa {
     public int getAltura() {
         return altura;
     }
-    public void setAltura(int altura) {
+    private void setAltura(int altura) {
         this.altura = altura;
     }
     public int getAnchura() {
         return anchura;
     }
-    public void setAnchura(int anchura) {
+    private void setAnchura(int anchura) {
         this.anchura = anchura;
     }
     public Logger getLogger() {
@@ -120,5 +120,7 @@ public class Mapa {
 
     public void setCeldas(ArrayList<ArrayList<Celda>> celdas) {
         this.celdas = celdas;
+        this.setAltura(celdas.size());
+        this.setAnchura(celdas.get(0).size());
     }
 }

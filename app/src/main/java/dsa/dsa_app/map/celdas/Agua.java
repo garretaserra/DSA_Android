@@ -18,4 +18,9 @@ public class Agua extends Celda {
         return bmp;
     }
 
+    @Override
+    public boolean canWalkThrough() {
+        return false;
+    }
+
 }
