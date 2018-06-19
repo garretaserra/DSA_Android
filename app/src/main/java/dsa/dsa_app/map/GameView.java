@@ -17,6 +17,7 @@ import dsa.dsa_app.R;
 import dsa.dsa_app.map.celdas.*;
 import dsa.dsa_app.visuals.Arrows;
 import dsa.dsa_app.visuals.Character;
+import dsa.dsa_app.visuals.Cofre;
 import dsa.dsa_app.visuals.Sprite;
 
 public class GameView extends SurfaceView {
@@ -277,7 +278,7 @@ public class GameView extends SurfaceView {
         principalColumnas.add(principalFila12);
         //Añadir las columnas al mapa
         principal.setCeldas(principalColumnas);
-
+        principal.getEntities().add(new Cofre(200,200));
 
 
         //Dibujar MAPA ORFANATO
@@ -344,7 +345,7 @@ public class GameView extends SurfaceView {
         }
         orfanatoFila5.add(new Muro()); //espacio para controles
         //Añadir la quinta columna
-       principalColumnas.add( orfanatoFila5);
+        orfanatoColumnas.add(orfanatoFila5);
 
         //Elementos de la sexta fila
         for (int i = 0; i<4; i++) {
@@ -355,7 +356,7 @@ public class GameView extends SurfaceView {
             orfanatoFila6.add(new Muro());
         }
         //Añadir la sexta columna
-        principalColumnas.add(orfanatoFila6);
+        orfanatoColumnas.add(orfanatoFila6);
         //Añadir las columnas al mapa
         orfanato.setCeldas(principalColumnas);
 
@@ -472,6 +473,11 @@ public class GameView extends SurfaceView {
                     Bitmap bmp = map.getCeldas().get(i).get(j).getResource();
                     canvas.drawBitmap(bmp, null, r, null);
                 }
+            }
+
+            //draw map objects
+            for (Sprite s : map.getEntities()) {
+                s.draw(canvas);
             }
 
             //draw entities

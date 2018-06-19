@@ -35,19 +35,10 @@ public class UserMain extends AppCompatActivity {
         }
     }
 
-    public void mapList(View view){
-        //inici de la tasca
-        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
-        pb1.setVisibility(ProgressBar.VISIBLE);
-        Intent i = new Intent(this, MapList.class);
-        startActivity(i);
-    }
-
     public void game(View view) {
         //inici de la tasca
         pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
         pb1.setVisibility(ProgressBar.VISIBLE);
-
         Intent i = new Intent(this, Game.class);
         startActivity(i);
     }
