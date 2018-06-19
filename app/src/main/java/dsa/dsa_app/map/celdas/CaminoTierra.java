@@ -9,9 +9,10 @@ import dsa.dsa_app.App;
 import dsa.dsa_app.R;
 import dsa.dsa_app.map.Views;
 
-public class Muro extends Celda {
+public class CaminoTierra extends Celda {
 
-    private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(), R.drawable.muro);
+    private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(),R.drawable.camino_de_tierra);
+
     @Override
     public Bitmap getResource() {
         return bmp;
@@ -19,6 +20,7 @@ public class Muro extends Celda {
 
     @Override
     public boolean canWalkThrough() {
-        return false;
+        return true;
     }
+
 }

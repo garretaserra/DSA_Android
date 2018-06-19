@@ -3,15 +3,12 @@ package dsa.dsa_app.map.celdas;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
 import dsa.dsa_app.App;
 import dsa.dsa_app.R;
-import dsa.dsa_app.map.Views;
 
-public class Muro extends Celda {
+public class CaminoInterior extends Celda{
+    private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(), R.drawable.camino_interior);
 
-    private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(), R.drawable.muro);
     @Override
     public Bitmap getResource() {
         return bmp;
@@ -19,6 +16,6 @@ public class Muro extends Celda {
 
     @Override
     public boolean canWalkThrough() {
-        return false;
+        return true;
     }
 }

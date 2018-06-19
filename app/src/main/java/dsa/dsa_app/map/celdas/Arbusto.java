@@ -18,4 +18,9 @@ public class Arbusto extends Celda {
     public Bitmap getResource() {
         return bmp;
     }
+
+    @Override
+    public boolean canWalkThrough() {
+        return true;
+    }
 }

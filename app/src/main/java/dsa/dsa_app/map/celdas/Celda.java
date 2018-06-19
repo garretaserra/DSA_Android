@@ -15,4 +15,5 @@ import android.graphics.Rect;
 public abstract class Celda{
 
     public abstract Bitmap getResource();
+    public abstract boolean canWalkThrough();
 }

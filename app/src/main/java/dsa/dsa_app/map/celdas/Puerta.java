@@ -18,4 +18,9 @@ public class Puerta extends Celda {
         return bmp;
     }
 
+    @Override
+    public boolean canWalkThrough() {
+        return true;
+    }
+
 }
