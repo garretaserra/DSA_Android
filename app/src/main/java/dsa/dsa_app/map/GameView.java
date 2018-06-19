@@ -278,7 +278,8 @@ public class GameView extends SurfaceView {
         principalColumnas.add(principalFila12);
         //Añadir las columnas al mapa
         principal.setCeldas(principalColumnas);
-        principal.getEntities().add(new Cofre(this,5,5));
+        principal.getEntities().add(new Cofre(this,11,9,null));
+        principal.getEntities().add(new Cofre(this, 1,4, "Llave Casa"));
 
 
         //Dibujar MAPA ORFANATO
