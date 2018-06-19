@@ -73,7 +73,6 @@ public class Cofre extends Sprite {
         double distance = Math.sqrt(Math.pow(gameView.getCharacter().getPosx()-x,2)+Math.pow(gameView.getCharacter().getPosy()-y,2));
         if(distance<70) {
             this.setOpen(true);
-
         }
     }
 

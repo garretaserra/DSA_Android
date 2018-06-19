@@ -4,6 +4,9 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dsa.dsa_app.map.GameView;
 import dsa.dsa_app.map.Mapa;
 
@@ -21,6 +24,7 @@ public class Character extends Sprite {
     private int width;
     private int height;
     private int direction;
+    private List<Objeto> inventario = new ArrayList<>();
 
 
     public Character(GameView gameView, Bitmap bmp) {
@@ -29,7 +33,6 @@ public class Character extends Sprite {
         GameView gameView1 = gameView;
         this.bmp = bmp;
     }
-
     @Override
     public int getHeight() {
         return height;
@@ -125,5 +128,9 @@ public class Character extends Sprite {
     }
     public void stop(){
         speed = 0;
+    }
+
+    public void añadirObjeto(Objeto obj){
+
     }
 }
