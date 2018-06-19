@@ -527,6 +527,7 @@ public class GameView extends SurfaceView {
             }
             case "orfanato":{
                 map = orfanato;
+
                 break;
             }
             case "banco":{
