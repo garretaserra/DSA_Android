@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import dsa.dsa_app.App;
 import dsa.dsa_app.R;
+import dsa.dsa_app.map.GameView;
 import dsa.dsa_app.map.Views;
 
 public class Arbusto extends Celda {
@@ -22,5 +23,10 @@ public class Arbusto extends Celda {
     @Override
     public boolean canWalkThrough() {
         return false;
+    }
+
+    @Override
+    public void onTouch(GameView gameView){
+        GameView.changeMapTo("banco");
     }
 }

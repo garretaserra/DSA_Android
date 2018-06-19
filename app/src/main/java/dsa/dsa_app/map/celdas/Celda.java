@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
+import dsa.dsa_app.map.GameView;
+
 /*@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
 @JsonSubTypes({
@@ -16,4 +18,6 @@ public abstract class Celda{
 
     public abstract Bitmap getResource();
     public abstract boolean canWalkThrough();
+    public void onTouch(GameView gameView){};
+
 }

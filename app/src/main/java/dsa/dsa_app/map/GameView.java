@@ -23,12 +23,12 @@ import dsa.dsa_app.visuals.Sprite;
 public class GameView extends SurfaceView {
     private GameLoopThread gameLoopThread;
     private List<Sprite> entities = new ArrayList<>();
-    private static String currentMap;
     private static Mapa map;
-    private Mapa principal;
-    private Mapa orfanato;
-    private Mapa banco;
-    private Canvas mapBackground = new Canvas();
+    private static Mapa principal;
+    private static Mapa orfanato;
+    private static Mapa banco;
+    private int height;
+    private int width;
 
     public GameView(Context context) {
         super(context);
@@ -359,7 +359,7 @@ public class GameView extends SurfaceView {
         //Añadir la sexta columna
         orfanatoColumnas.add(orfanatoFila6);
         //Añadir las columnas al mapa
-        orfanato.setCeldas(principalColumnas);
+        orfanato.setCeldas(orfanatoColumnas);
 
 
          //Dibujar MAPA BANCO
@@ -444,6 +444,7 @@ public class GameView extends SurfaceView {
     }
         @Override
         public boolean onTouchEvent (MotionEvent event){
+            map.getCeldas().get((int)event.getY()*map.getAltura()/height).get((int) event.getX()*map.getAnchura()/width).onTouch(this);
             for (Sprite s : map.getEntities()) {
                 if (s.isCollition(event.getX(), event.getY())) {
                     s.onTouch(this, event);
@@ -464,12 +465,8 @@ public class GameView extends SurfaceView {
         public void draw (Canvas canvas){
             super.draw(canvas);
             canvas.drawColor(Color.BLACK);
-
-            //Check if map is already loaded
-            if (!map.getNombre().equals(currentMap)) {
-                //If the map is not loaded, load the map from storage
-                //map = Mapa.cargarMapa(currentMap);
-            }
+            height = canvas.getHeight();
+            width = canvas.getWidth();
 
             int height = canvas.getHeight() / map.getCeldas().size();
             int width = canvas.getWidth() / map.getCeldas().get(0).size();
@@ -504,5 +501,21 @@ public class GameView extends SurfaceView {
 
     public static Mapa getCurrentMap() {
         return map;
+    }
+    public static void changeMapTo(String mapa){
+        switch (mapa){
+            case "principal":{
+                map = principal;
+                break;
+            }
+            case "orfanato":{
+                map = orfanato;
+                break;
+            }
+            case "banco":{
+                map = banco;
+                break;
+            }
+        }
     }
 }

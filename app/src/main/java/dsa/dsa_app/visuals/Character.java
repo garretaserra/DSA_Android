@@ -131,6 +131,15 @@ public class Character extends Sprite {
     }
 
     public void añadirObjeto(Objeto obj){
-
+        inventario.add(obj);
+    }
+    public boolean quitarObjeto(String objeto){
+        for(Objeto o : inventario){
+            if(o.name.equals(objeto)){
+                inventario.remove(o);
+                return true;
+            }
+        }
+        return false;
     }
 }
