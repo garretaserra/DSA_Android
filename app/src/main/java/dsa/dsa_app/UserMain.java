@@ -54,10 +54,10 @@ public class UserMain extends AppCompatActivity {
 
     public void userList(View view){
         //inici de la tasca
-//        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
-//        pb1.setVisibility(ProgressBar.VISIBLE);
-        //Intent i = new Intent(this, MapList.class);
-        //startActivity(i);
+        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
+        pb1.setVisibility(ProgressBar.VISIBLE);
+        Intent i = new Intent(this, ListOfUsers.class);
+        startActivity(i);
     }
 
     public void playerInfo(View view){

@@ -20,7 +20,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Register extends AppCompatActivity {
 
     //Base URL of server
-    public static final String baseURL = "http://192.168.1.41:8080/myapp/";
+    public static final String baseURL = "http://172.20.10.2:8080/myapp/";
+    //public static final String baseURL = "http://192.168.1.41:8080/myapp/"; //Sara
     //public static final String baseURL = "http://192.168.42.209:8080/myapp/";
     private MapRest mapServices; //modifico con nombre interfaz
 
