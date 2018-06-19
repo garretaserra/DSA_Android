@@ -20,6 +20,6 @@ public class Orfanato extends Celda {
 
     @Override
     public void onTouch(GameView gameView){
-        GameView.changeMapTo("orfanato");
+        GameView.changeMapTo(gameView,null,"orfanato");
     }
 }

@@ -24,9 +24,4 @@ public class Arbusto extends Celda {
     public boolean canWalkThrough() {
         return false;
     }
-
-    @Override
-    public void onTouch(GameView gameView){
-        GameView.changeMapTo("banco");
-    }
 }

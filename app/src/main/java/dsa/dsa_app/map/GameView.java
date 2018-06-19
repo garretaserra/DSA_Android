@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.support.annotation.Nullable;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -18,17 +19,19 @@ import dsa.dsa_app.map.celdas.*;
 import dsa.dsa_app.visuals.Arrows;
 import dsa.dsa_app.visuals.Character;
 import dsa.dsa_app.visuals.Cofre;
+import dsa.dsa_app.visuals.Sonsoles;
 import dsa.dsa_app.visuals.Sprite;
 
 public class GameView extends SurfaceView {
     private GameLoopThread gameLoopThread;
-    private List<Sprite> entities = new ArrayList<>();
+    private static List<Sprite> entities = new ArrayList<>();
     private static Mapa map;
-    private static Mapa principal;
-    private static Mapa orfanato;
-    private static Mapa banco;
+    public static Mapa principal = new Mapa();
+    public static Mapa orfanato = new Mapa();
+    public static Mapa banco = new Mapa();
     private int height;
     private int width;
+    private static boolean changingMap = false;
 
     public GameView(Context context) {
         super(context);
@@ -67,7 +70,6 @@ public class GameView extends SurfaceView {
         entities.add(new Arrows(this, BitmapFactory.decodeResource(getResources(), R.drawable.arrows)));
 
         //Dibujar MAPA PRINCIPAL 12x18
-        principal = new Mapa();
         principal.setNombre("Principal");
         ArrayList<ArrayList<Celda>> principalColumnas = new ArrayList<>();
         ArrayList<Celda> principalFila1 = new ArrayList<>();
@@ -283,7 +285,6 @@ public class GameView extends SurfaceView {
 
 
         //Dibujar MAPA ORFANATO
-        orfanato = new Mapa();
         orfanato.setNombre("orfanato");
         ArrayList<ArrayList<Celda>> orfanatoColumnas = new ArrayList<>();
         ArrayList<Celda> orfanatoFila1 = new ArrayList<>();
@@ -360,10 +361,9 @@ public class GameView extends SurfaceView {
         orfanatoColumnas.add(orfanatoFila6);
         //Añadir las columnas al mapa
         orfanato.setCeldas(orfanatoColumnas);
-
+        orfanato.getEntities().add(new Sonsoles(this, 1,1));
 
          //Dibujar MAPA BANCO
-        banco = new Mapa();
         banco.setNombre("banco");
         ArrayList<ArrayList<Celda>> bancoColumnas = new ArrayList<>();
         ArrayList<Celda> bancoFila1 = new ArrayList<>();
@@ -444,6 +444,10 @@ public class GameView extends SurfaceView {
     }
         @Override
         public boolean onTouchEvent (MotionEvent event){
+            if(changingMap) {
+                changingMap = false;
+                return true;
+            }
             map.getCeldas().get((int)event.getY()*map.getAltura()/height).get((int) event.getX()*map.getAnchura()/width).onTouch(this);
             for (Sprite s : map.getEntities()) {
                 if (s.isCollition(event.getX(), event.getY())) {
@@ -472,7 +476,7 @@ public class GameView extends SurfaceView {
             int width = canvas.getWidth() / map.getCeldas().get(0).size();
             //Iteration over all cells to draw each one
             for (int i = 0; i < map.getCeldas().size(); i++) {
-                for (int j = 0; j < map.getCeldas().get(i).size(); j++) {
+                for (int j = 0; j < map.getCeldas().get(i).size() && i < map.getCeldas().size(); j++) {
                     Rect r = new Rect(width * j, height * i, width * (j + 1), height * (i + 1));
                     Bitmap bmp = map.getCeldas().get(i).get(j).getResource();
                     canvas.drawBitmap(bmp, null, r, null);
@@ -495,17 +499,30 @@ public class GameView extends SurfaceView {
             }
         }
 
-    public Character getCharacter () {
+    public static Character getCharacter () {
         return (Character) entities.stream().filter(x -> x.getClass() == Character.class).collect(Collectors.toList()).get(0);
     }
 
     public static Mapa getCurrentMap() {
         return map;
     }
-    public static void changeMapTo(String mapa){
-        switch (mapa){
+    public static void changeMapTo(GameView gameView, @Nullable String claseOrigen, String mapaDestino){
+        changingMap = true;
+        switch (mapaDestino){
             case "principal":{
                 map = principal;
+                for(int i = 0; i<principal.getCeldas().size();i++){
+                    for (int j = 0; j<principal.getCeldas().get(i).size(); j++){
+                        try {
+                            if(principal.getCeldas().get(i).get(j).getClass()== Class.forName("dsa.dsa_app.map.celdas."+claseOrigen)){
+                                getCharacter().move(j*gameView.getWidth()/principal.getCeldas().get(0).size(),
+                                        i*gameView.getHeight()/principal.getCeldas().size());
+                            }
+                        } catch (ClassNotFoundException e) {
+                        }
+                    }
+
+                }
                 break;
             }
             case "orfanato":{

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import dsa.dsa_app.App;
 import dsa.dsa_app.R;
+import dsa.dsa_app.map.GameView;
 import dsa.dsa_app.map.Views;
 
 public class Puerta extends Celda {
@@ -20,6 +21,15 @@ public class Puerta extends Celda {
     @Override
     public boolean canWalkThrough() {
         return false;
+    }
+
+    @Override
+    public void onTouch(GameView gameView){
+        GameView.changeMapTo(gameView,cammel(GameView.getCurrentMap().getNombre()),"principal");
+    }
+
+    private String cammel(String arg){
+        return arg.substring(0,1).toUpperCase()+arg.substring(1);
     }
 
 }
