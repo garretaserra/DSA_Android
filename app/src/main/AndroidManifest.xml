@@ -29,9 +29,6 @@
             android:name=".MapList"
             android:label="@string/title_activity_game"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".UserInfo"
-            android:screenOrientation="landscape" />
         <activity android:name=".UserMain" />
         <activity android:name=".Register" />
         <activity

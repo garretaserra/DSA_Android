@@ -17,17 +17,17 @@ import retrofit2.http.Path;
 
 public interface MapRest {
 
-    @POST("funciones/userLogin/")
-    Call<Usuario> getLogIn();
+    /*@POST("funciones/userLogin/")
+    Call<Usuario> getLogIn();*/
 
-    @POST("funciones/consultarUsuario2")
+    @POST("funciones/consultarUsuario3") //LOGIN REAL
     Call<Boolean> consultarUsuario (@Body Usuario u);
 
-    @POST("funciones/crearUsuario2")
+    @POST("funciones/crearUsuario2") //REGISTER REAL
     //@FormUrlEncoded
     Call<Boolean> crearUsuario (@Body Usuario u);
 
-    @GET("/funciones/listaUsuarios")
+    @GET("/funciones/listaUsuarios") //LISTA DE TODOS LOS USUARIOS
     Call<List<Usuario>> listaUsuarios();
 
 //            @Path("nombre") String nombre,

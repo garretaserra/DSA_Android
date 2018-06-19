@@ -74,7 +74,7 @@ public class ListOfUsers extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<List<Usuario>> call, Throwable t) {
                         //Logger
-                        Toast a = Toast.makeText(getApplicationContext(), "Fallo de conexion", Toast.LENGTH_LONG);
+                        Toast a = Toast.makeText(getApplicationContext(), "Fallo de conexión", Toast.LENGTH_LONG);
                         a.show();
                         //al final de la tasca
                         pb1.setVisibility(ProgressBar.INVISIBLE);
