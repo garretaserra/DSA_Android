@@ -29,6 +29,10 @@ public class GameView extends SurfaceView {
     private Mapa banco;
     private Canvas mapBackground = new Canvas();
 
+    public static Mapa getCurrentMap(){
+        return map;
+    }
+
     public GameView(Context context) {
         super(context);
         gameLoopThread = new GameLoopThread(this);
@@ -69,214 +73,217 @@ public class GameView extends SurfaceView {
         principal = new Mapa();
         principal.setNombre("Principal");
         ArrayList<ArrayList<Celda>> celdasColumnas = new ArrayList<>();
-        ArrayList<Celda> principalFila1 = new ArrayList<>();
-        ArrayList<Celda> principalFila2 = new ArrayList<>();
-        ArrayList<Celda> principalFila3 = new ArrayList<>();
-        ArrayList<Celda> principalFila4 = new ArrayList<>();
-        ArrayList<Celda> principalFila5 = new ArrayList<>();
-        ArrayList<Celda> principalFila6 = new ArrayList<>();
-        ArrayList<Celda> principalFila7 = new ArrayList<>();
-        ArrayList<Celda> principalFila8 = new ArrayList<>();
-        ArrayList<Celda> principalFila9 = new ArrayList<>();
-        ArrayList<Celda> principalFila10 = new ArrayList<>();
-        ArrayList<Celda> principalFila11 = new ArrayList<>();
-        ArrayList<Celda> principalFila12 = new ArrayList<>();
-
+        ArrayList<Celda> celdasFila = new ArrayList<>();
         //Elementos de la primera fila
         for (int i =0; i<16; i++){
-        principalFila1.add(new Muro());
+        celdasFila.add(new Muro());
         }
-        principalFila1.add(new Gruta());
-        principalFila1.add(new Muro());
+        celdasFila.add(new Gruta());
+        celdasFila.add(new Muro());
         //Añadir la primera columna
-        celdasColumnas.add(principalFila1);
+        celdasColumnas.add(celdasFila);
 
+        celdasFila.clear();
         //Elementos de la segunda fila
         for (int i =0; i<5; i++){
-            principalFila2.add(new Arbusto());
+            celdasFila.add(new Arbusto());
         }
         for (int i =0; i<4; i++){
-            principalFila2.add(new Montaña());
+            celdasFila.add(new Montaña());
         }
         for (int i =0; i<7; i++){
-            principalFila2.add(new Arbol());
+            celdasFila.add(new Arbol());
         }
-        principalFila2.add(new CaminoTierra());
-        principalFila2.add(new Muro());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Muro());
         //Añadir la segunda columna
-        celdasColumnas.add(principalFila2);
+        celdasColumnas.add(celdasFila);
 
+        celdasFila.clear();
         //Elementos de la tercera fila
-        principalFila3.add(new Arbusto());
-        principalFila3.add(new Arbusto());
-        principalFila3.add(new Banco());
+        celdasFila.add(new Arbusto());
+        celdasFila.add(new Arbusto());
+        celdasFila.add(new Banco());
         for (int i =0; i<3; i++){
-            principalFila3.add(new Arbusto());
+            celdasFila.add(new Arbusto());
         }
-        principalFila3.add(new Orfanato());
+        celdasFila.add(new Orfanato());
         for (int i =0; i<3; i++){
-            principalFila3.add(new Montaña());
+            celdasFila.add(new Montaña());
         }
         for (int i =0; i<6; i++){
-            principalFila3.add(new Arbol());
+            celdasFila.add(new Arbol());
         }
-        principalFila3.add(new CaminoTierra());
-        principalFila3.add(new Muro());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Muro());
         //Añadir la tercera columna
-        celdasColumnas.add(principalFila3);
+        celdasColumnas.add(celdasFila);
 
+        celdasFila.clear();
         //Elementos de la cuarta fila
-        principalFila4.add(new Arbol());
-        principalFila4.add(new Arbol());
-        principalFila4.add(new CaminoTierra());
+        celdasFila.add(new Arbol());
+        celdasFila.add(new Arbol());
+        celdasFila.add(new CaminoTierra());
         for (int i =0; i<3; i++){
-            principalFila4.add(new Cespez());
+            celdasFila.add(new Cespez());
         }
         for (int i =0; i<8; i++){
-            principalFila4.add(new CaminoTierra());
+            celdasFila.add(new CaminoTierra());
         }
-        principalFila4.add(new Cespez());
-        principalFila4.add(new Agua());
-        principalFila4.add(new CaminoTierra());
-        principalFila4.add(new Muro());
+        celdasFila.add(new Cespez());
+        celdasFila.add(new Agua());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Muro());
         //Añadir la cuarta columna
-        celdasColumnas.add(principalFila4);
+        celdasColumnas.add(celdasFila);
 
+        celdasFila.clear();
         //Elementos de la quinta fila
-        principalFila5.add(new Arbusto());
-        principalFila5.add(new CaminoTierra());
-        principalFila5.add(new CaminoTierra());
+        celdasFila.add(new Arbusto());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
         for (int i =0; i<2; i++){
-            principalFila5.add(new Cespez());
+            celdasFila.add(new Cespez());
         }
         for (int i =0; i<4; i++){
-            principalFila5.add(new CaminoTierra());
+            celdasFila.add(new CaminoTierra());
         }
         for (int i =0; i<6; i++){
-            principalFila5.add(new Cespez());
+            celdasFila.add(new Cespez());
         }
-        principalFila5.add(new Agua());
-        principalFila5.add(new CaminoTierra());
-        principalFila5.add(new Muro());
+        celdasFila.add(new Agua());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Muro());
         //Añadir la quinta columna
-        celdasColumnas.add(principalFila5);
+        celdasColumnas.add(celdasFila);
 
+        celdasFila.clear();
         //Elementos de la sexta fila
-        principalFila6.add(new Arbusto());
-        principalFila6.add(new CaminoTierra());
-        principalFila6.add(new CaminoTierra());
+        celdasFila.add(new Arbusto());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
         for (int i =0; i<2; i++){
-            principalFila6.add(new Cespez());
+            celdasFila.add(new Cespez());
         }
         for (int i =0; i<4; i++){
-            principalFila6.add(new CaminoTierra());
+            celdasFila.add(new CaminoTierra());
         }
-        principalFila6.add(new Cespez());
-        principalFila6.add(new Cespez());
-        principalFila6.add(new Agua());
-        principalFila6.add(new Cespez());
-        principalFila6.add(new Cespez());
-        principalFila6.add(new Cespez());
-        principalFila6.add(new Agua());
-        principalFila6.add(new CaminoTierra());
-        principalFila6.add(new Muro());
+        celdasFila.add(new Cespez());
+        celdasFila.add(new Cespez());
+        celdasFila.add(new Agua());
+        celdasFila.add(new Cespez());
+        celdasFila.add(new Cespez());
+        celdasFila.add(new Cespez());
+        celdasFila.add(new Agua());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Muro());
         //Añadir la sexta columna
-        celdasColumnas.add(principalFila6);
+        celdasColumnas.add(celdasFila);
 
+        celdasFila.clear();
         //Elementos de la septima fila
-        principalFila7.add(new Arbusto());
-        principalFila7.add(new CaminoTierra());
-        principalFila7.add(new CaminoTierra());
+        celdasFila.add(new Arbusto());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
         for (int i =0; i<2; i++) {
-            principalFila7.add(new Cespez());
+            celdasFila.add(new Cespez());
         }
         for (int i =0; i<4; i++){
-            principalFila7.add(new CaminoTierra());
+            celdasFila.add(new CaminoTierra());
         }
-        principalFila7.add(new Cespez());
-        principalFila7.add(new Cespez());
+        celdasFila.add(new Cespez());
+        celdasFila.add(new Cespez());
         for (int i =0; i<5; i++) {
-            principalFila7.add(new Agua());
+            celdasFila.add(new Agua());
         }
-        principalFila7.add(new CaminoTierra());
-        principalFila7.add(new Muro());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Muro());
         //Añadir la septima columna
-        celdasColumnas.add(principalFila7);
+        celdasColumnas.add(celdasFila);
 
+        celdasFila.clear();
         //Elementos de la octava fila
-        principalFila8.add(new Arbusto());
-        principalFila8.add(new CaminoTierra());
-        principalFila8.add(new CaminoTierra());
+        celdasFila.add(new Arbusto());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
         for (int i =0; i<2; i++) {
-            principalFila8.add(new Cespez());
+            celdasFila.add(new Cespez());
         }
         for (int i =0; i<5; i++){
-            principalFila8.add(new CaminoTierra());
+            celdasFila.add(new CaminoTierra());
         }
-        principalFila8.add(new Cespez());
+        celdasFila.add(new Cespez());
         for (int i =0; i<5; i++) {
-            principalFila8.add(new Agua());
+            celdasFila.add(new Agua());
         }
-        principalFila8.add(new CaminoTierra());
-        principalFila8.add(new Muro());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Muro());
         //Añadir la octava columna
-        celdasColumnas.add(principalFila8);
+        celdasColumnas.add(celdasFila);
 
+
+        celdasFila.clear();
         //Elementos de la novena fila
-        principalFila9.add(new Arbusto());
-        principalFila9.add(new CaminoTierra());
-        principalFila9.add(new CaminoTierra());
-        principalFila9.add(new Cespez());
-        principalFila9.add(new Tienda());
+        celdasFila.add(new Arbusto());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Cespez());
+        celdasFila.add(new Tienda());
         for (int i =0; i<5; i++){
-            principalFila9.add(new CaminoTierra());
+            celdasFila.add(new CaminoTierra());
         }
-        principalFila9.add(new Cespez());
+        celdasFila.add(new Cespez());
         for (int i =0; i<5; i++) {
-            principalFila9.add(new Agua());
+            celdasFila.add(new Agua());
         }
-        principalFila9.add(new CaminoTierra());
-        principalFila9.add(new Muro());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Muro());
         //Añadir la novena columna
-        celdasColumnas.add(principalFila9);
+        celdasColumnas.add(celdasFila);
 
+        celdasFila.clear();
         //Elementos de la decima fila
-        principalFila10.add(new Casa());
+        celdasFila.add(new Casa());
         for (int i =0; i<6; i++){
-            principalFila10.add(new CaminoTierra());
+            celdasFila.add(new CaminoTierra());
         }
-        principalFila10.add(new Cespez());
+        celdasFila.add(new Cespez());
         for (int i =0; i<4; i++){
-            principalFila10.add(new CaminoTierra());
+            celdasFila.add(new CaminoTierra());
         }
         for (int i =0; i<4; i++) {
-            principalFila10.add(new Agua());
+            celdasFila.add(new Agua());
         }
-        principalFila10.add(new CaminoTierra());
-        principalFila10.add(new Muro());
+        celdasFila.add(new CaminoTierra());
+        celdasFila.add(new Muro());
         //Añadir la decima columna
-        celdasColumnas.add(principalFila10);
+        celdasColumnas.add(celdasFila);
 
+        celdasFila.clear();
         //Elementos de la undecima fila
-        principalFila11.add(new Muro());
+        celdasFila.add(new Muro());
         for (int i =0; i<7; i++){
-            principalFila11.add(new Cespez());
+            celdasFila.add(new Cespez());
         }
         for (int i =0; i<9; i++){
-            principalFila11.add(new CaminoTierra());
+            celdasFila.add(new CaminoTierra());
         }
-        principalFila11.add(new Muro());
+        celdasFila.add(new Muro());
         //Añadir la undecima columna
-        celdasColumnas.add(principalFila11);
+        celdasColumnas.add(celdasFila);
 
+        celdasFila.clear();
         //Elementos de la duodecima fila
         for (int i =0; i<18; i++){
-            principalFila12.add(new Muro());
+            celdasFila.add(new Muro());
         }
         //Añadir la duodecima columna
-        celdasColumnas.add(principalFila12);
+        celdasColumnas.add(celdasFila);
         //Añadir las columnas al mapa
         principal.setCeldas(celdasColumnas);
+        principal.setAnchura(18);
+        principal.setAltura(12);
+
 
         //Dibujar MAPA ORFANATO
         orfanato = new Mapa();

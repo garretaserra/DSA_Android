@@ -5,14 +5,15 @@ import android.graphics.Rect;
 import android.view.MotionEvent;
 
 import dsa.dsa_app.map.GameView;
+import dsa.dsa_app.map.Mapa;
 
 public class Character extends Sprite {
 
     int[] DIRECTION_TO_ANIMATION_MAP = { 1, 3, 2, 0 };
     private static final int BMP_ROWS = 4;
     private static final int BMP_COLUMNS = 3;
-    private int posx = 0;
-    private int posy = 0;
+    private int posx = 500;
+    private int posy = 500;
     private int speed;
     private final int defSpeed = 15;
     private Bitmap bmp;
@@ -50,32 +51,50 @@ public class Character extends Sprite {
         if(speed!=0) {
             currentFrame = ++currentFrame % BMP_COLUMNS;
         }
+        int offsetx = 0;
+        int offsety = 0;
+
+
         //Change the position depending on the direction of movement
-        switch (direction){
+        switch (direction) {
             case 0:     //left
-                if(posx-speed>0)
-                    posx -= speed;
-                else
-                    posx=0;
+                if (posx - speed > 0) {
+                    offsetx = -speed;
+                } else {
+                    posx = 0;
+                    return;
+                }
                 break;
             case 1:     //up
-                if(posy-speed>0)
-                    posy -= speed;
-                else
-                    posy=0;
+                if (posy - speed > 0)
+                    offsety = -speed;
+                else {
+                    posy = 0;
+                    return;
+                }
                 break;
             case 2:     //right
-                if(posx+speed+width<canvas.getWidth())
-                    posx += speed;
-                else
-                    posx = canvas.getWidth()-width;
+                if (posx + speed + width < canvas.getWidth()) {
+                    offsetx = speed;
+                } else {
+                    posx = canvas.getWidth() - width;
+                    return;
+                }
                 break;
             case 3:     //down
-                if(posy+speed+height<canvas.getHeight())
-                    posy += speed;
-                else
-                    posy = canvas.getHeight()-height;
+                if (posy + speed + height < canvas.getHeight())
+                    offsety = speed;
+                else {
+                    posy = canvas.getHeight() - height;
+                    return;
+                }
                 break;
+        }
+
+        Mapa map = GameView.getCurrentMap();
+        if(map.getCeldas().get(Math.min((posy+offsety)*map.getAltura()/canvas.getHeight(),map.getAltura()-1)).get(Math.min((posx+offsetx)*map.getAnchura()/canvas.getWidth(),map.getAnchura()-1)).canWalkThrough()){
+            posy += offsety;
+            posx += offsetx;
         }
     }
 
