@@ -22,8 +22,8 @@ import dsa.dsa_app.visuals.Sprite;
 public class GameView extends SurfaceView {
     private GameLoopThread gameLoopThread;
     private List<Sprite> entities = new ArrayList<>();
-    private String currentMap;
-    private Mapa map;
+    private static String currentMap;
+    private static Mapa map;
     private Mapa principal;
     private Mapa orfanato;
     private Mapa banco;
@@ -515,4 +515,7 @@ public class GameView extends SurfaceView {
             return (Character) entities.stream().filter(x -> x.getClass() == Character.class).collect(Collectors.toList()).get(0);
         }
 
+    public static Mapa getCurrentMap() {
+        return map;
+    }
 }
