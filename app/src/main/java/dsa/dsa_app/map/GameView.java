@@ -443,6 +443,12 @@ public class GameView extends SurfaceView {
     }
         @Override
         public boolean onTouchEvent (MotionEvent event){
+            for (Sprite s : map.getEntities()) {
+                if (s.isCollition(event.getX(), event.getY())) {
+                    s.onTouch(this, event);
+                    break;
+                }
+            }
             for (Sprite s : entities) {
                 if (s.isCollition(event.getX(), event.getY())) {
                     s.onTouch(this, event);
