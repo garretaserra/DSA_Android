@@ -492,13 +492,18 @@ public class GameView extends SurfaceView {
 
             int height = canvas.getHeight() / map.getCeldas().size();
             int width = canvas.getWidth() / map.getCeldas().get(0).size();
-            //Iteration over all cells to draw each one
-            for (int i = 0; i < map.getCeldas().size(); i++) {
-                for (int j = 0; j < map.getCeldas().get(i).size(); j++) {
-                    Rect r = new Rect(width * j, height * i, width * (j + 1), height * (i + 1));
-                    Bitmap bmp = map.getCeldas().get(i).get(j).getResource();
-                    canvas.drawBitmap(bmp, null, r, null);
+            try {
+                //Iteration over all cells to draw each one
+                for (int i = 0; i < map.getCeldas().size(); i++) {
+                    for (int j = 0; j < map.getCeldas().get(i).size(); j++) {
+                        Rect r = new Rect(width * j, height * i, width * (j + 1), height * (i + 1));
+                        Bitmap bmp = map.getCeldas().get(i).get(j).getResource();
+                        canvas.drawBitmap(bmp, null, r, null);
+                    }
                 }
+            }
+            catch (NullPointerException e){
+                e.printStackTrace();
             }
 
             //draw entities
