@@ -11,8 +11,7 @@ import dsa.dsa_app.map.Views;
 
 public class Puerta extends Celda {
 
-    private static Bitmap bmp;
-
+    private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(), R.drawable.puerta);
     @Override
     public Bitmap getResource() {
         return bmp;
@@ -20,7 +19,7 @@ public class Puerta extends Celda {
 
     @Override
     public boolean canWalkThrough() {
-        return true;
+        return false;
     }
 
 }
