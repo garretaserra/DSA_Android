@@ -118,10 +118,12 @@ public class GameView extends SurfaceView {
         for (int i =0; i<3; i++){
             principalFila3.add(new Montana());
         }
-        for (int i =0; i<6; i++){
+        for (int i =0; i<4; i++){
             principalFila3.add(new Arbol());
         }
-        principalFila3.add(new CaminoTierra());
+        for (int i =0; i<3; i++){
+            principalFila3.add(new CaminoInterior());
+        }
         principalFila3.add(new Muro());
         //Añadir la tercera columna
         principalColumnas.add(principalFila3);
@@ -133,12 +135,9 @@ public class GameView extends SurfaceView {
         for (int i =0; i<3; i++){
             principalFila4.add(new Cespez());
         }
-        for (int i =0; i<8; i++){
+        for (int i =0; i<11; i++){
             principalFila4.add(new CaminoTierra());
         }
-        principalFila4.add(new Cespez());
-        principalFila4.add(new Agua());
-        principalFila4.add(new CaminoTierra());
         principalFila4.add(new Muro());
         //Añadir la cuarta columna
         principalColumnas.add(principalFila4);
@@ -157,10 +156,10 @@ public class GameView extends SurfaceView {
             principalFila5.add(new Cespez());
         }
         principalFila5.add(new Agua());
-        principalFila5.add(new CaminoTierra());
+        principalFila5.add(new Arbusto());
         principalFila5.add(new Muro());
         //Añadir la quinta columna
-        principalColumnas.add( principalFila5);
+        principalColumnas.add(principalFila5);
 
         //Elementos de la sexta fila
         principalFila6.add(new Arbusto());
@@ -179,7 +178,7 @@ public class GameView extends SurfaceView {
         principalFila6.add(new Cespez());
         principalFila6.add(new Cespez());
         principalFila6.add(new Agua());
-        principalFila6.add(new CaminoTierra());
+        principalFila6.add(new Arbusto());
         principalFila6.add(new Muro());
         //Añadir la sexta columna
         principalColumnas.add(principalFila6);
@@ -199,7 +198,7 @@ public class GameView extends SurfaceView {
         for (int i =0; i<5; i++) {
             principalFila7.add(new Agua());
         }
-        principalFila7.add(new CaminoTierra());
+        principalFila7.add(new Arbusto());
         principalFila7.add(new Muro());
         //Añadir la septima columna
         principalColumnas.add( principalFila7);
@@ -218,7 +217,7 @@ public class GameView extends SurfaceView {
         for (int i =0; i<5; i++) {
             principalFila8.add(new Agua());
         }
-        principalFila8.add(new CaminoTierra());
+        principalFila8.add(new Arbusto());
         principalFila8.add(new Muro());
         //Añadir la octava columna
         principalColumnas.add( principalFila8);
@@ -236,7 +235,7 @@ public class GameView extends SurfaceView {
         for (int i =0; i<5; i++) {
             principalFila9.add(new Agua());
         }
-        principalFila9.add(new CaminoTierra());
+        principalFila9.add(new Arbusto());
         principalFila9.add(new Muro());
         //Añadir la novena columna
         principalColumnas.add( principalFila9);
@@ -253,7 +252,7 @@ public class GameView extends SurfaceView {
         for (int i =0; i<4; i++) {
             principalFila10.add(new Agua());
         }
-        principalFila10.add(new CaminoTierra());
+        principalFila10.add(new Arbusto());
         principalFila10.add(new Muro());
         //Añadir la decima columna
         principalColumnas.add(principalFila10);
@@ -264,7 +263,7 @@ public class GameView extends SurfaceView {
             principalFila11.add(new Cespez());
         }
         for (int i =0; i<9; i++){
-            principalFila11.add(new CaminoTierra());
+            principalFila11.add(new Agua());
         }
         principalFila11.add(new Muro());
         //Añadir la undecima columna
