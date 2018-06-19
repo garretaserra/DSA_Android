@@ -46,7 +46,6 @@ public class Character extends Sprite {
     public int getPosy() {
         return posy;
     }
-
     public void update(Canvas canvas){
         if(speed==0) {
             return;
@@ -60,7 +59,7 @@ public class Character extends Sprite {
         switch (direction) {
             case 0:     //left
                 if (posx - speed > 0) {
-                    if(map.getCeldas().get((posy)*map.getAltura()/canvas.getHeight()).get((posx-speed)*map.getAnchura()/canvas.getWidth()).canWalkThrough()){
+                    if(map.getCeldas().get((posy+getHeight())*map.getAltura()/canvas.getHeight()).get((posx-speed)*map.getAnchura()/canvas.getWidth()).canWalkThrough()){
                         posx -= speed;
                     }
                 } else {
@@ -70,7 +69,7 @@ public class Character extends Sprite {
                 break;
             case 1:     //up
                 if (posy - speed > 0) {
-                    if(map.getCeldas().get((posy-speed)*map.getAltura()/canvas.getHeight()).get((posx)*map.getAnchura()/canvas.getWidth()).canWalkThrough()){
+                    if(map.getCeldas().get((posy-speed+getHeight())*map.getAltura()/canvas.getHeight()).get((posx+getWidth()/2)*map.getAnchura()/canvas.getWidth()).canWalkThrough()){
                         posy -= speed;
                     }
                 }
@@ -81,7 +80,7 @@ public class Character extends Sprite {
                 break;
             case 2:     //right
                 if (posx + speed + width < canvas.getWidth()) {
-                    if(map.getCeldas().get((posy)*map.getAltura()/canvas.getHeight()).get((posx+speed+width)*map.getAnchura()/canvas.getWidth()).canWalkThrough()){
+                    if(map.getCeldas().get((posy+getHeight())*map.getAltura()/canvas.getHeight()).get((posx+speed+width)*map.getAnchura()/canvas.getWidth()).canWalkThrough()){
                         posx += speed;
                     }
                 } else {
@@ -92,7 +91,7 @@ public class Character extends Sprite {
             case 3:     //down
                 if (posy + speed + height < canvas.getHeight()) {
                     offsety = speed;
-                    if(map.getCeldas().get((posy+speed)*map.getAltura()/canvas.getHeight()).get((posx)*map.getAnchura()/canvas.getWidth()).canWalkThrough()){
+                    if(map.getCeldas().get((posy+speed+getHeight())*map.getAltura()/canvas.getHeight()).get((posx+getWidth()/2)*map.getAnchura()/canvas.getWidth()).canWalkThrough()){
                         posy += speed;
                     }
                 }
@@ -106,7 +105,6 @@ public class Character extends Sprite {
 
 
     }
-
     public void draw(Canvas canvas) {
         update(canvas);
         int srcX = currentFrame * width;
@@ -120,7 +118,6 @@ public class Character extends Sprite {
     public void onTouch(GameView gameView, MotionEvent event) {
         //Event when Character is touched
     }
-
     public void move(int direction){
         this.direction = direction;
         speed = defSpeed;
