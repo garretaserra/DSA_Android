@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 
 import dsa.dsa_app.App;
 import dsa.dsa_app.R;
+import dsa.dsa_app.map.GameView;
 
 public class Banco extends Celda {
     private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(), R.drawable.banco);
@@ -17,5 +18,10 @@ public class Banco extends Celda {
     @Override
     public boolean canWalkThrough() {
         return false;
+    }
+
+    @Override
+    public void onTouch(GameView gameView){
+        GameView.changeMapTo(gameView, null,"banco");
     }
 }

@@ -23,7 +23,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UsuarioDetalle extends AppCompatActivity {
 
-    public static final String baseURL = "http://192.168.1.41:8080/myapp/";
+    //public static final String baseURL = "http://192.168.1.41:8080/myapp/";
+    public static final String baseURL = "http://192.168.1.41:8080/myapp/"; //Sara
 
     private MapRest mapServices;
 

@@ -142,4 +142,16 @@ public class Character extends Sprite {
         }
         return false;
     }
+    public boolean isClose(int x, int y){
+        double distance = Math.sqrt(
+                Math.pow(
+                        (this.getPosx()+this.getWidth()/2)-x,2)
+                        +Math.pow(
+                        (this.getPosy()+this.getHeight()/2)-y,2));
+        return distance < 70;
+    }
+    public void move(int x, int y){
+        this.posx = x;
+        this.posy = y;
+    }
 }

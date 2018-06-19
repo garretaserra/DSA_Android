@@ -55,7 +55,7 @@ public class UserMain extends AppCompatActivity {
         //inici de la tasca
         pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
         pb1.setVisibility(ProgressBar.VISIBLE);
-        Intent i = new Intent(this,UserInfo.class);
+        Intent i = new Intent(this,UsuarioDetalle.class);
         i.putExtra("email1", n.getText().toString());
         startActivity(i);
     }
@@ -64,7 +64,7 @@ public class UserMain extends AppCompatActivity {
         //inici de la tasca
         pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
         pb1.setVisibility(ProgressBar.VISIBLE);
-        Intent i = new Intent(this,UserInfo.class);
+        Intent i = new Intent(this,UsuarioDetalle.class);
         startActivity(i);
     }
 }
