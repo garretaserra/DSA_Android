@@ -278,7 +278,7 @@ public class GameView extends SurfaceView {
         principalColumnas.add(principalFila12);
         //Añadir las columnas al mapa
         principal.setCeldas(principalColumnas);
-        principal.getEntities().add(new Cofre(200,200));
+        principal.getEntities().add(new Cofre(this,5,5));
 
 
         //Dibujar MAPA ORFANATO
@@ -491,10 +491,9 @@ public class GameView extends SurfaceView {
             }
         }
 
-
-        public Character getCharacter () {
-            return (Character) entities.stream().filter(x -> x.getClass() == Character.class).collect(Collectors.toList()).get(0);
-        }
+    public Character getCharacter () {
+        return (Character) entities.stream().filter(x -> x.getClass() == Character.class).collect(Collectors.toList()).get(0);
+    }
 
     public static Mapa getCurrentMap() {
         return map;
