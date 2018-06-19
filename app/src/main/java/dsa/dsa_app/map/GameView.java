@@ -29,11 +29,7 @@ public class GameView extends SurfaceView {
     private Mapa banco;
     private Canvas mapBackground = new Canvas();
 
-    public static Mapa getCurrentMap(){
-        return map;
-    }
-
-    public GameView(Context context) {
+   public GameView(Context context) {
         super(context);
         gameLoopThread = new GameLoopThread(this);
         SurfaceHolder holder = getHolder();
@@ -89,7 +85,7 @@ public class GameView extends SurfaceView {
             celdasFila.add(new Arbusto());
         }
         for (int i =0; i<4; i++){
-            celdasFila.add(new Montaña());
+            celdasFila.add(new Montana());
         }
         for (int i =0; i<7; i++){
             celdasFila.add(new Arbol());
@@ -109,7 +105,7 @@ public class GameView extends SurfaceView {
         }
         celdasFila.add(new Orfanato());
         for (int i =0; i<3; i++){
-            celdasFila.add(new Montaña());
+            celdasFila.add(new Montana());
         }
         for (int i =0; i<6; i++){
             celdasFila.add(new Arbol());
@@ -281,8 +277,7 @@ public class GameView extends SurfaceView {
         celdasColumnas.add(celdasFila);
         //Añadir las columnas al mapa
         principal.setCeldas(celdasColumnas);
-        principal.setAnchura(18);
-        principal.setAltura(12);
+
 
 
         //Dibujar MAPA ORFANATO
@@ -365,7 +360,7 @@ public class GameView extends SurfaceView {
         celdasFila2.add(new Muro());
         celdasFila2.add(new Muro());
         celdasFila2.add(new Muro());
-        celdasFila2.add(null); //para entrar y salir de la habitacion
+        celdasFila2.add(new Puerta()); //para entrar y salir de la habitacion
         celdasFila2.add(new Muro());
         celdasFila2.add(new Muro());
         celdasFila2.add(new Muro()); ///espacio para controles
@@ -374,8 +369,7 @@ public class GameView extends SurfaceView {
         celdasColumnas2.add(celdasFila2);
         //Añadir las columnas al mapa
         orfanato.setCeldas(celdasColumnas2);
-        orfanato.setAnchura(9);
-         orfanato.setAltura(6);
+
 
          //Dibujar MAPA BANCO
         banco = new Mapa();
@@ -466,8 +460,7 @@ public class GameView extends SurfaceView {
         celdasColumnas3.add(celdasFila3);
         //Añadir columnas al mapa
         banco.setCeldas(celdasColumnas3);
-        banco.setAnchura(9);
-        banco.setAltura(6);
+
 
         map = principal;
 
