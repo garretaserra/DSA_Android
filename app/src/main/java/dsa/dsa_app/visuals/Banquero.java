@@ -20,6 +20,8 @@ public class Banquero extends Sprite{
     private int columnas;
     private int posX;
     private int posY;
+    private int height = bmp.getHeight()/4;
+    private int width = bmp.getWidth()/3;
 
     public Banquero (GameView gameView, int filas, int columnas){
         this.gameView = gameView;
@@ -30,11 +32,11 @@ public class Banquero extends Sprite{
 
     @Override
     public int getHeight() {
-        return 0;
+        return height;
     }
     @Override
     public int getWidth() {
-        return 0;
+        return width;
     }
     @Override
     public int getPosx() {
@@ -57,7 +59,7 @@ public class Banquero extends Sprite{
     @Override
     public void onTouch(GameView gameView, MotionEvent event) {
         if(gameView.getCharacter().isClose((int)event.getX(),(int)event.getY())){
-            Toast.makeText(App.getContext(), "Soy el banquero", Toast.LENGTH_SHORT).show();
+            Toast.makeText(App.getContext(), "Visit the mountain if you want to know more about your family.", Toast.LENGTH_SHORT).show();
         }
     }
 }

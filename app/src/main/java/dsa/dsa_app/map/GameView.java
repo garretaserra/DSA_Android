@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 import dsa.dsa_app.R;
 import dsa.dsa_app.map.celdas.*;
 import dsa.dsa_app.visuals.Arrows;
+import dsa.dsa_app.visuals.Banquero;
 import dsa.dsa_app.visuals.Character;
 import dsa.dsa_app.visuals.Cofre;
 import dsa.dsa_app.visuals.Sonsoles;
@@ -434,6 +435,7 @@ public class GameView extends SurfaceView {
 
         //Añadir columnas al mapa
         banco.setCeldas(bancoColumnas);
+        banco.getEntities().add(new Banquero(this,1,7));
 
 
         map = principal;
