@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -281,7 +282,7 @@ public class GameView extends SurfaceView {
         //Añadir las columnas al mapa
         principal.setCeldas(principalColumnas);
         principal.getEntities().add(new Cofre(this,11,9,null));
-        principal.getEntities().add(new Cofre(this, 1,4, "Llave Casa"));
+        principal.getEntities().add(new Cofre(this, 1,4, "House Key"));
 
 
         //Dibujar MAPA ORFANATO
@@ -293,6 +294,7 @@ public class GameView extends SurfaceView {
         ArrayList<Celda> orfanatoFila4 = new ArrayList<>();
         ArrayList<Celda> orfanatoFila5 = new ArrayList<>();
         ArrayList<Celda> orfanatoFila6 = new ArrayList<>();
+
         //Elementos de la primera fila
         for( int i =0; i<9; i++ ) {
             orfanatoFila1.add(new Muro());
@@ -368,7 +370,7 @@ public class GameView extends SurfaceView {
         ArrayList<Celda> bancoFila3 = new ArrayList<>();
         ArrayList<Celda> bancoFila4 = new ArrayList<>();
         ArrayList<Celda> bancoFila5 = new ArrayList<>();
-        ArrayList<Celda> bancoFila6 = new ArrayList<>();;
+        ArrayList<Celda> bancoFila6 = new ArrayList<>();
 
         //Elementos de la primera fila
         for (int i = 0; i<9; i++) {
@@ -378,9 +380,12 @@ public class GameView extends SurfaceView {
         bancoColumnas.add(bancoFila1);
 
         //Elementos de la segunda fila
-        for (int i = 0; i<9; i++) {
+        bancoFila2.add(new Puerta());
+        for (int i = 0; i<7; i++) {
             bancoFila2.add(new Gris());
         }
+        bancoFila2.add(new Muro());
+
         //Añadir la segunda columna
         bancoColumnas.add(bancoFila2);
 
@@ -420,18 +425,19 @@ public class GameView extends SurfaceView {
         bancoColumnas.add(bancoFila5);
 
         //Elementos de la sexta fila
-        for (int i = 0; i<7; i++) {
+        for (int i = 0; i<9; i++) {
             bancoFila6.add(new Muro());
         }
-        bancoFila6.add(new Puerta());
+        //bancoFila6.add(new Puerta());
         //Añadir la sexta columna
-        bancoColumnas.add(bancoFila4);
+        bancoColumnas.add(bancoFila6);
 
         //Añadir columnas al mapa
         banco.setCeldas(bancoColumnas);
 
 
         map = principal;
+        Toast.makeText(getContext(), "What am I doing here? I better find someone", Toast.LENGTH_LONG).show();
 
     }
         @Override
@@ -440,7 +446,8 @@ public class GameView extends SurfaceView {
                 changingMap = false;
                 return true;
             }
-            map.getCeldas().get((int)event.getY()*map.getAltura()/height).get((int) event.getX()*map.getAnchura()/width).onTouch(this);
+
+            map.getCeldas().get((int)event.getY()*map.getAltura()/height).get((int) event.getX()*map.getAnchura()/width).onTouch(this, event);
             for (Sprite s : map.getEntities()) {
                 if (s.isCollition(event.getX(), event.getY())) {
                     s.onTouch(this, event);
@@ -519,11 +526,13 @@ public class GameView extends SurfaceView {
             }
             case "orfanato":{
                 map = orfanato;
-
+                getCharacter().move(4*gameView.getWidth()/orfanato.getCeldas().get(0).size(),
+                        4*gameView.getHeight()/orfanato.getCeldas().size());
                 break;
             }
             case "banco":{
                 map = banco;
+
                 break;
             }
         }

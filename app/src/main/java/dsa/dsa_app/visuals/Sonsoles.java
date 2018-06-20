@@ -58,7 +58,7 @@ public class Sonsoles extends Sprite{
     @Override
     public void onTouch(GameView gameView, MotionEvent event) {
         if(gameView.getCharacter().isClose((int)event.getX(),(int)event.getY())){
-            Toast.makeText(App.getContext(), "Soy Sonsoles", Toast.LENGTH_SHORT).show();
+            Toast.makeText(App.getContext(), "I'm Sonsoles,you should visit your abandoned house if you want to know more about you", Toast.LENGTH_SHORT).show();
         }
     }
 }

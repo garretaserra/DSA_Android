@@ -4,6 +4,7 @@ package dsa.dsa_app.map.celdas;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.view.MotionEvent;
 
 import dsa.dsa_app.map.GameView;
 
@@ -18,6 +19,6 @@ public abstract class Celda{
 
     public abstract Bitmap getResource();
     public abstract boolean canWalkThrough();
-    public void onTouch(GameView gameView){};
+    public void onTouch(GameView gameView, MotionEvent event){};
 
 }

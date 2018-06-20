@@ -16,6 +16,6 @@ public class Gris extends Celda {
 
     @Override
     public boolean canWalkThrough() {
-        return false;
+        return true;
     }
 }
