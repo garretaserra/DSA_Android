@@ -49,7 +49,7 @@ public class Register extends AppCompatActivity {
         //al final de la tasca
         pb1.setVisibility(ProgressBar.INVISIBLE);
 
-        name = (EditText) findViewById (R.id.email);
+        name = (EditText) findViewById (R.id.nom);
         email = (EditText) findViewById (R.id.email); // poner el nombre de la cajita de texto "editText..."
         passw = (EditText) findViewById (R.id.passw);
         passw2 = (EditText) findViewById (R.id.passw2);
@@ -183,81 +183,3 @@ public class Register extends AppCompatActivity {
     }
 
 }
-
-       /* nominfo = name.getText().toString().trim();
-        passinfo = passw.getText().toString().trim();
-        passinfo2 = passw2.getText().toString().trim();
-        emailinfo = email.getText().toString().trim();
-
-        //if(!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(correo)) {
-
-        if (!TextUtils.isEmpty(nominfo) && !TextUtils.isEmpty(passinfo) && !TextUtils.isEmpty(passinfo2) && !TextUtils.isEmpty(emailinfo)) {
-            if (passinfo2.equals(passinfo)) {
-
-                //mapServices.crearUsuario(""+nominfo, ""+passinfo, ""+emailinfo);
-                Usuario u = new Usuario(1,""+nominfo, ""+passinfo, ""+emailinfo,""+null, 0);
-
-                //conecto con servidor y hago función register
-                mapServices.crearUsuario(u).enqueue( //funcion que he definido
-                        new Callback<Boolean>() { //pongo lo que retorno
-                            @Override
-                            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                                int statusCode = response.code();
-
-                                //if (response.isSuccessful()) { //pongo toda la funcion cuando me funciona el retrofit
-                                //boolean r = response.body().booleanValue();
-
-                                if (response.code() == 201) {
-                                    Toast t = Toast.makeText(getApplicationContext(), "Registered, code:" + response.code(), Toast.LENGTH_LONG);
-                                    t.show();
-                                    Intent i = new Intent(getApplicationContext(), UserMain.class);
-                                    startActivity(i);
-                                }
-                                else if (response.code() == 409) {
-                                    Toast t = Toast.makeText(getApplicationContext(), "Error on registration, code:" + response.code(), Toast.LENGTH_LONG);
-                                    t.show();
-                                }
-
-//                                    else if (response.code()==400) {
-//                                        Toast t = Toast.makeText(getApplicationContext(), "Passwords doesn't match", Toast.LENGTH_LONG);
-//                                        t.show();
-//                                    }
-
-                                else {
-                                    Toast t = Toast.makeText(getApplicationContext(), "Error, code:" + response.code(), Toast.LENGTH_LONG);
-                                    t.show();
-                                }
-                            }
-//                                else {
-//                                    //Logger
-//                                    Toast t = Toast.makeText(getApplicationContext(), "Response not successful", Toast.LENGTH_LONG);
-//                                    t.show();
-//
-//                                    Toast.makeText (Register.this ,"This user already exist",Toast.LENGTH_SHORT).show();
-//                                    Log.d("onResponse", "onResponse. Code" + Integer.toString(statusCode));
-//                                }
-//                            }
-
-                            @Override
-                            public void onFailure(Call<Boolean> call, Throwable t) {
-                                //Logger
-                                Toast a = Toast.makeText(getApplicationContext(), "Fallo de conexion", Toast.LENGTH_LONG);
-                                a.show();
-                            }
-                        }
-                );
-            }
-            else {
-                Toast t = Toast.makeText(getApplicationContext(), "Los passwords no coinciden", Toast.LENGTH_LONG);
-                t.show();
-            }
-        }
-        else {
-            Toast t = Toast.makeText(getApplicationContext(), "Hay campos incompletos", Toast.LENGTH_LONG);
-            t.show();
-        }
-
-    }*/
-
-
-
