@@ -23,7 +23,7 @@ public interface MapRest {
     @POST("funciones/infoUsuario") //LOGIN REAL
     Call<Boolean> consultarUsuario (@Body Usuario u);
 
-    @POST("funciones/crearUsuario3") //REGISTER REAL
+    @POST("funciones/crearUsuario") //REGISTER REAL
     //@FormUrlEncoded
     Call<Boolean> crearUsuario (@Body Usuario u);
 
