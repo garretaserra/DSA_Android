@@ -80,7 +80,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginTop="81dp"
         android:background="@drawable/button2"
-        android:onClick="loginServer"
+        android:onClick="loginSI"
         android:text="Log in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
