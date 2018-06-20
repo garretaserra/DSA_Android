@@ -8,6 +8,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dsa.dsa_app.rest.MapRest;
@@ -55,7 +56,12 @@ public class ListOfUsers extends AppCompatActivity {
                             Toast t = Toast.makeText(getApplicationContext(), "Lista obtenida, code:" + response.code(), Toast.LENGTH_LONG);
                             t.show();
 
-                            List<Usuario> userList = response.body();
+                            //List<Usuario> userList = response.body();
+                            List<Usuario> userList = new ArrayList<>();
+                            Usuario u1 = new Usuario("Sergi","123456", "sergi@gmail.com");
+                            Usuario u2 = new Usuario("Sara", "123456", "sara@gmail.com");
+                            userList.add(u1);
+                            userList.add(u2);
                             ListView lv = (ListView) findViewById(R.id.followers_list);
                             UsuarioArrayAdapter uaa = new UsuarioArrayAdapter(getApplicationContext(), userList);
                             lv.setAdapter(uaa);

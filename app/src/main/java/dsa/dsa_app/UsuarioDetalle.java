@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dsa.dsa_app.rest.MapRest;
@@ -31,6 +32,7 @@ public class UsuarioDetalle extends AppCompatActivity {
     String emailinfo;
     EditText email;
     ProgressBar pb1;
+    List<Usuario> userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,13 @@ public class UsuarioDetalle extends AppCompatActivity {
                 .build();
         mapServices = retrofit.create(MapRest.class); //modifico con nombre interfaz
 
+        //List<Usuario> userList = response.body();
+        List<Usuario> userList = new ArrayList<>();
+        Usuario u1 = new Usuario(1, "Sergi","123456", "sergi@gmail.com","http://www.dysconcsa.com/img/user.png",1);
+        Usuario u2 = new Usuario(2,"Sara", "123456", "sara@gmail.com","http://www.dysconcsa.com/img/user.png",1);
+        userList.add(u1);
+        userList.add(u2);
+
         if (emailinfo != null) {
             //TextView n = (TextView) findViewById(R.id.myemail);
             //n.setText("Email: "+emailinfo);
@@ -63,48 +72,66 @@ public class UsuarioDetalle extends AppCompatActivity {
             final EditText et = (EditText)findViewById(R.id.idemail_txt);
             final String idEmail = et.getText().toString().trim();
 
-            //conecto con servidor y hago función register
-            mapServices.listaUsuarios().enqueue( //funcion que he definido
-                    new Callback<List<Usuario>>() { //pongo lo que retorno
-                        @Override
-                        public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
-                            int statusCode = response.code();
+            Toast.makeText(UsuarioDetalle.this, "Peticion correcta", Toast.LENGTH_LONG).show();
+            Log.d("onResponse", "onResponse. Code" + 200 + "resultado:");
 
-                            if (response.isSuccessful()) { //pongo toda la funcion cuando me funciona el retrofit
+            for(Usuario user: userList){
+                if (user.getEmail().equals(idEmail)) {
+                    ListView lv = (ListView) findViewById(R.id.followers_list);
+                    UsuarioDetalleArrayAdapter uaa = new UsuarioDetalleArrayAdapter(getApplicationContext(), userList);
+                    lv.setAdapter(uaa);
 
-                                Toast.makeText(UsuarioDetalle.this, "Peticion correcta", Toast.LENGTH_LONG).show();
-                                Log.d("onResponse", "onResponse. Code" + Integer.toString(statusCode) + "resultado:");
+                    pb1.setVisibility(ProgressBar.INVISIBLE);//al final de la tasca
+                }
+            }
 
-                                List<Usuario> userList = response.body();
-
-                                for(Usuario user: userList){
-                                    if (user.getEmail().equals(idEmail)) {
-                                        ListView lv = (ListView) findViewById(R.id.followers_list);
-                                        UsuarioDetalleArrayAdapter uaa = new UsuarioDetalleArrayAdapter(getApplicationContext(), userList);
-                                        lv.setAdapter(uaa);
-
-                                        pb1.setVisibility(ProgressBar.INVISIBLE);//al final de la tasca
-                                    }
-                                }
-                            }
-                            else {
-                                Toast t = Toast.makeText(getApplicationContext(), "Error, code:" + response.code(), Toast.LENGTH_LONG);
-                                t.show();
-                                //al final de la tasca
-                                pb1.setVisibility(ProgressBar.INVISIBLE);
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<List<Usuario>> call, Throwable t) {
-                            //Logger
-                            Toast a = Toast.makeText(getApplicationContext(), "Fallo de conexion", Toast.LENGTH_LONG);
-                            a.show();
-                            //al final de la tasca
-                            pb1.setVisibility(ProgressBar.INVISIBLE);
-                        }
-                    }
-            );
+//            //conecto con servidor y hago función register
+//            mapServices.listaUsuarios().enqueue( //funcion que he definido
+//                    new Callback<List<Usuario>>() { //pongo lo que retorno
+//                        @Override
+//                        public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+//                           // int statusCode = response.code();
+//                            int statusCode = 200;
+//                           // if (response.isSuccessful()) { //pongo toda la funcion cuando me funciona el retrofit
+//
+//                                Toast.makeText(UsuarioDetalle.this, "Peticion correcta", Toast.LENGTH_LONG).show();
+//                                Log.d("onResponse", "onResponse. Code" + Integer.toString(statusCode) + "resultado:");
+//
+//                                //List<Usuario> userList = response.body();
+//                                List<Usuario> userList = new ArrayList<>();
+//                                Usuario u1 = new Usuario(1, "Sergi","123456", "sergi@gmail.com","http://www.dysconcsa.com/img/user.png",1);
+//                                Usuario u2 = new Usuario(2,"Sara", "123456", "sara@gmail.com","http://www.dysconcsa.com/img/user.png",1);
+//                                userList.add(u1);
+//                                userList.add(u2);
+//
+//                                for(Usuario user: userList){
+//                                    if (user.getEmail().equals(idEmail)) {
+//                                        ListView lv = (ListView) findViewById(R.id.followers_list);
+//                                        UsuarioDetalleArrayAdapter uaa = new UsuarioDetalleArrayAdapter(getApplicationContext(), userList);
+//                                        lv.setAdapter(uaa);
+//
+//                                        pb1.setVisibility(ProgressBar.INVISIBLE);//al final de la tasca
+//                                    }
+//                                }
+//                            }
+//                            else {
+//                                Toast t = Toast.makeText(getApplicationContext(), "Error, code:" + response.code(), Toast.LENGTH_LONG);
+//                                t.show();
+//                                //al final de la tasca
+//                                pb1.setVisibility(ProgressBar.INVISIBLE);
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<List<Usuario>> call, Throwable t) {
+//                            //Logger
+//                            Toast a = Toast.makeText(getApplicationContext(), "Fallo de conexion", Toast.LENGTH_LONG);
+//                            a.show();
+//                            //al final de la tasca
+//                            pb1.setVisibility(ProgressBar.INVISIBLE);
+//                        }
+//                    }
+//            );
         }
     }
 
@@ -113,18 +140,18 @@ public class UsuarioDetalle extends AppCompatActivity {
         final String idEmail = et.getText().toString().trim();
 
         //conecto con servidor y hago función register
-        mapServices.listaUsuarios().enqueue( //funcion que he definido
-                new Callback<List<Usuario>>() { //pongo lo que retorno
-                    @Override
-                    public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
-                        int statusCode = response.code();
-
-                        if (response.isSuccessful()) { //pongo toda la funcion cuando me funciona el retrofit
+//        mapServices.listaUsuarios().enqueue( //funcion que he definido
+//                new Callback<List<Usuario>>() { //pongo lo que retorno
+//                    @Override
+//                    public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+//                        int statusCode = response.code();
+//
+//                        if (response.isSuccessful()) { //pongo toda la funcion cuando me funciona el retrofit
 
                             Toast.makeText(UsuarioDetalle.this, "Peticion correcta", Toast.LENGTH_LONG).show();
-                            Log.d("onResponse", "onResponse. Code" + Integer.toString(statusCode) + "resultado:");
+                            Log.d("onResponse", "onResponse. Code" + 200 + "resultado:");
 
-                            List<Usuario> userList = response.body();
+                           // List<Usuario> userList = response.body();
 
                             for(Usuario user: userList){
                                 if (user.getEmail().equals(idEmail)) {
@@ -136,25 +163,25 @@ public class UsuarioDetalle extends AppCompatActivity {
                                 }
                             }
                         }
-                        else {
-                            Toast t = Toast.makeText(getApplicationContext(), "Error, code:" + response.code(), Toast.LENGTH_LONG);
-                            t.show();
-                            //al final de la tasca
-                            pb1.setVisibility(ProgressBar.INVISIBLE);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<Usuario>> call, Throwable t) {
-                        //Logger
-                        Toast a = Toast.makeText(getApplicationContext(), "Fallo de conexion", Toast.LENGTH_LONG);
-                        a.show();
-                        //al final de la tasca
-                        pb1.setVisibility(ProgressBar.INVISIBLE);
-                    }
-                }
-        );
-    }
+//                        else {
+//                            Toast t = Toast.makeText(getApplicationContext(), "Error, code:" + response.code(), Toast.LENGTH_LONG);
+//                            t.show();
+//                            //al final de la tasca
+//                            pb1.setVisibility(ProgressBar.INVISIBLE);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<List<Usuario>> call, Throwable t) {
+//                        //Logger
+//                        Toast a = Toast.makeText(getApplicationContext(), "Fallo de conexion", Toast.LENGTH_LONG);
+//                        a.show();
+//                        //al final de la tasca
+//                        pb1.setVisibility(ProgressBar.INVISIBLE);
+//                    }
+//                }
+//        );
+//    }}
 
     public void back(View view){
 

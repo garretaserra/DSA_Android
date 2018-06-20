@@ -32,13 +32,11 @@ public class UsuarioArrayAdapter extends ArrayAdapter<Usuario> {
         Picasso.with(super.getContext()).load(""+u.getImagen()).into((ImageView) convertView.findViewById(R.id.foto_img));
         TextView et = (TextView)convertView.findViewById(R.id.username_txt);
         TextView et2 = (TextView)convertView.findViewById(R.id.idemail_txt);
-        TextView et3 = (TextView)convertView.findViewById(R.id.obj1_txt);
 
         et.setText(u.getNombre()); //cojo los nombres de los autores
         et2.setText(u.getEmail());
 
         int x = u.getObj1();
-        et3.setText("Objetos:"+ Integer.toString(x));
 
         return convertView;
     }
