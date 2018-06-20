@@ -61,6 +61,6 @@ public class Banquero extends Sprite{
         if(gameView.getCharacter().isClose((int)event.getX(),(int)event.getY())){
             Toast.makeText(App.getContext(), "Visit the mountain if you want to know more about your family.", Toast.LENGTH_SHORT).show();
         }
-        //GameView.getCurrentMap().getEntities().add(new)
+        GameView.principal.getEntities().add(new Hermana(gameView, 1,16));
     }
 }
