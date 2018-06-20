@@ -8,6 +8,22 @@
     tools:context=".UserMain">
 
     <Button
+        android:id="@+id/changePassword"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="121dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/button"
+        android:onClick="changeContraseña"
+        android:text="Change password"
+        app:layout_constraintBottom_toTopOf="@+id/play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/listOfUsers" />
+
+    <Button
         android:id="@+id/listOfUsers"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="121dp"

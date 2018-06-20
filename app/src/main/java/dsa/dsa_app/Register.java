@@ -182,8 +182,6 @@ public class Register extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void actualizaServer(View view) {
-    }
 }
 
        /* nominfo = name.getText().toString().trim();

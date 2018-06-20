@@ -20,12 +20,15 @@ public interface MapRest {
     /*@POST("funciones/userLogin/")
     Call<Usuario> getLogIn();*/
 
-    @POST("funciones/consultarUsuario3") //LOGIN REAL
+    @POST("funciones/infoUsuario") //LOGIN REAL
     Call<Boolean> consultarUsuario (@Body Usuario u);
 
-    @POST("funciones/crearUsuario2") //REGISTER REAL
+    @POST("funciones/crearUsuario") //REGISTER REAL
     //@FormUrlEncoded
     Call<Boolean> crearUsuario (@Body Usuario u);
+
+    @POST("funciones/cambiarPass") //CAMBIAR PASSWORD
+    Call<Boolean> cambiarPass (@Body Usuario u);
 
     @GET("/funciones/listaUsuarios") //LISTA DE TODOS LOS USUARIOS
     Call<List<Usuario>> listaUsuarios();

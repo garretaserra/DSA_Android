@@ -67,4 +67,13 @@ public class UserMain extends AppCompatActivity {
         Intent i = new Intent(this,UsuarioDetalle.class);
         startActivity(i);
     }
+
+    public void changeContraseña(View view){
+        //inici de la tasca
+        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
+        pb1.setVisibility(ProgressBar.VISIBLE);
+        Intent i = new Intent(this,CambioPassw.class);
+        i.putExtra("email1", n.getText().toString());
+        startActivity(i);
+    }
 }
