@@ -60,6 +60,15 @@ public class LogIn extends AppCompatActivity {
 
     }
 
+    public void loginSI(View view) {
+        Toast t = Toast.makeText(getApplicationContext(), "Logged, code:" + 200, Toast.LENGTH_LONG);
+        t.show();
+        Intent i = new Intent(getApplicationContext(), UserMain.class);
+        i.putExtra("email1", email.getText().toString());
+        startActivity(i);
+        //al final de la tasca
+        pb1.setVisibility(ProgressBar.INVISIBLE);
+    }
 
 
     public void registerServer(View view) {
