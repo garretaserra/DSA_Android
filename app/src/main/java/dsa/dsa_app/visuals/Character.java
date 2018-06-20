@@ -15,8 +15,8 @@ public class Character extends Sprite {
     int[] DIRECTION_TO_ANIMATION_MAP = { 1, 3, 2, 0 };
     private static final int BMP_ROWS = 4;
     private static final int BMP_COLUMNS = 3;
-    private int posx = 500;
-    private int posy = 500;
+    private int posx = 650;
+    private int posy = 200;
     private int speed;
     private final int defSpeed = 15;
     private Bitmap bmp;
@@ -143,12 +143,17 @@ public class Character extends Sprite {
         return false;
     }
     public boolean isClose(int x, int y){
+        int threshold;
+        if (GameView.getCurrentMap().getNombre().equals("Principal"))
+            threshold = 150;
+        else
+            threshold = 250;
         double distance = Math.sqrt(
                 Math.pow(
                         (this.getPosx()+this.getWidth()/2)-x,2)
                         +Math.pow(
                         (this.getPosy()+this.getHeight()/2)-y,2));
-        return distance < 70;
+        return distance < threshold;
     }
     public void move(int x, int y){
         this.posx = x;

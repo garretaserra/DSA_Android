@@ -2,6 +2,7 @@ package dsa.dsa_app.map.celdas;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.view.MotionEvent;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -24,8 +25,10 @@ public class Puerta extends Celda {
     }
 
     @Override
-    public void onTouch(GameView gameView){
-        GameView.changeMapTo(gameView,cammel(GameView.getCurrentMap().getNombre()),"principal");
+    public void onTouch(GameView gameView, MotionEvent event){
+        if(gameView.getCharacter().isClose((int)event.getX(),(int)event.getY())) {
+            GameView.changeMapTo(gameView, cammel(GameView.getCurrentMap().getNombre()), "principal");
+        }
     }
 
     private String cammel(String arg){

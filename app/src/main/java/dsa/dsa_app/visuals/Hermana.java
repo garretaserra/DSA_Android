@@ -11,30 +11,31 @@ import dsa.dsa_app.App;
 import dsa.dsa_app.R;
 import dsa.dsa_app.map.GameView;
 
-public class Sonsoles extends Sprite{
+public class Hermana extends Sprite {
 
-    private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(),R.drawable.sonsoles);
+    private static Bitmap bmp = BitmapFactory.decodeResource(App.getContext().getResources(), R.drawable.hermana);
 
     private GameView gameView;
     private int filas;
     private int columnas;
     private int posX;
     private int posY;
+    private int height = bmp.getHeight()/4;
+    private int width = bmp.getWidth()/3;
 
-
-    public Sonsoles(GameView gameView, int filas, int columnas){
+    public Hermana(GameView gameView, int filas, int columnas){
+        this.gameView = gameView;
         this.filas = filas;
         this.columnas = columnas;
-        this.gameView = gameView;
     }
 
     @Override
     public int getHeight() {
-        return bmp.getHeight()/4;
+        return height;
     }
     @Override
     public int getWidth() {
-        return bmp.getWidth()/3;
+        return width;
     }
     @Override
     public int getPosx() {
@@ -46,8 +47,8 @@ public class Sonsoles extends Sprite{
     }
     @Override
     public void draw(Canvas canvas) {
-        posX = columnas*gameView.getWidth()/GameView.orfanato.getAnchura();
-        posY = filas*gameView.getHeight()/GameView.orfanato.getAltura();
+        posX = columnas*gameView.getWidth()/GameView.principal.getAnchura();
+        posY = filas*gameView.getHeight()/GameView.principal.getAltura();
         int width = bmp.getWidth()/3;
         int height = bmp.getHeight()/4;
         Rect origen = new Rect(width*1,height*0,width*2,height*1);
@@ -58,7 +59,7 @@ public class Sonsoles extends Sprite{
     @Override
     public void onTouch(GameView gameView, MotionEvent event) {
         if(gameView.getCharacter().isClose((int)event.getX(),(int)event.getY())){
-            Toast.makeText(App.getContext(), "I'm Sonsoles,you should visit your abandoned house if you want to know more about you", Toast.LENGTH_SHORT).show();
+            Toast.makeText(App.getContext(), "I'm your sister, finally I have found you.", Toast.LENGTH_SHORT).show();
         }
     }
 }

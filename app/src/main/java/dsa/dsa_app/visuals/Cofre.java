@@ -78,15 +78,15 @@ public class Cofre extends Sprite {
                         (gameView.getCharacter().getPosx()+gameView.getCharacter().getWidth()/2)-x,2)
                         +Math.pow(
                         (gameView.getCharacter().getPosy()+gameView.getCharacter().getHeight()/2)-y,2));
-        if(distance<100) {
+        if(distance<100&&!open) {
             this.setOpen(true);
             if(objeto!=null){
                 gameView.getCharacter().añadirObjeto(new Objeto(objeto));
-                Toast.makeText(App.getContext(), "Has encontrado "+objeto, Toast.LENGTH_SHORT).show();
+                Toast.makeText(App.getContext(), "You have found:  "+objeto, Toast.LENGTH_SHORT).show();
                 //Call to server to update the database
             }
             else
-                Toast.makeText(App.getContext(), "Aquí no hay nada.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(App.getContext(), "Nothing here.", Toast.LENGTH_SHORT).show();
         }
     }
 

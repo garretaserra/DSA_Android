@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Splash_Screen"
-            android:theme="@style/AppTheme">>
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -22,10 +22,6 @@
         <activity
             android:name=".LogIn">
         </activity>
-        <activity
-            android:name=".MapList"
-            android:label="@string/title_activity_game"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UserMain" />
         <activity android:name=".Register" />
         <activity

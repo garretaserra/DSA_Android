@@ -2,6 +2,7 @@ package dsa.dsa_app.map.celdas;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.view.MotionEvent;
 
 import dsa.dsa_app.App;
 import dsa.dsa_app.R;
@@ -19,7 +20,7 @@ public class Orfanato extends Celda {
     public boolean canWalkThrough(){return false;}
 
     @Override
-    public void onTouch(GameView gameView){
+    public void onTouch(GameView gameView, MotionEvent event){
         GameView.changeMapTo(gameView,null,"orfanato");
     }
 }
