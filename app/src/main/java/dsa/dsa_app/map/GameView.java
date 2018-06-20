@@ -293,9 +293,6 @@ public class GameView extends SurfaceView {
         ArrayList<Celda> orfanatoFila4 = new ArrayList<>();
         ArrayList<Celda> orfanatoFila5 = new ArrayList<>();
         ArrayList<Celda> orfanatoFila6 = new ArrayList<>();
-        ArrayList<Celda> orfanatoFila7 = new ArrayList<>();
-        ArrayList<Celda> orfanatoFila8 = new ArrayList<>();
-
         //Elementos de la primera fila
         for( int i =0; i<9; i++ ) {
             orfanatoFila1.add(new Muro());
@@ -371,9 +368,7 @@ public class GameView extends SurfaceView {
         ArrayList<Celda> bancoFila3 = new ArrayList<>();
         ArrayList<Celda> bancoFila4 = new ArrayList<>();
         ArrayList<Celda> bancoFila5 = new ArrayList<>();
-        ArrayList<Celda> bancoFila6 = new ArrayList<>();
-        ArrayList<Celda> bancoFila7 = new ArrayList<>();
-        ArrayList<Celda> bancoFila8 = new ArrayList<>();
+        ArrayList<Celda> bancoFila6 = new ArrayList<>();;
 
         //Elementos de la primera fila
         for (int i = 0; i<9; i++) {
