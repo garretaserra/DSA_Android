@@ -145,24 +145,6 @@ public class CambioPassw extends AppCompatActivity {
         }
     }
 
-    public void cambioPassSI(View view) {
-        //inici de la tasca
-        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
-        pb1.setVisibility(ProgressBar.VISIBLE);
-
-        passinfo = passw.getText().toString().trim();
-        passinfo2 = passw2.getText().toString().trim();
-        emailinfo = email.getText().toString().trim();
-
-        Toast t = Toast.makeText(getApplicationContext(), "Password changed successfully, code:" +201, Toast.LENGTH_LONG);
-        t.show();
-        Intent i = new Intent(getApplicationContext(), UserMain.class);
-        i.putExtra("email1", email.getText().toString());
-        startActivity(i);
-        //al final de la tasca
-        pb1.setVisibility(ProgressBar.INVISIBLE);
-    }
-
     public void volverLogIn(View view) {
         //inici de la tasca
         pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
